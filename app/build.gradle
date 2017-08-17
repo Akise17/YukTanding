@@ -25,7 +25,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-//    Additional
+    //    Additional
+    //    Additional
+
+
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.roughike:bottom-bar:2.3.1'
     compile 'com.google.firebase:firebase-auth:10.0.1'
@@ -33,14 +36,14 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.0.1'
     compile 'com.google.firebase:firebase-storage:10.0.1'
     compile 'com.google.firebase:firebase-core:10.0.1'
-//    Additional
-
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
+
+
 
 
 
