@@ -5,8 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="yukTandingGreen">#77dd77</color>
 
+    <color name="background_prime">#000000</color>
     <color name="color_input_hint">#FFF</color>
-    <color name="color_text_highlight">#fafafa</color>
+    <color name="color_text_highlight">#6555a325</color>
     <color name="color_text">#FFF</color>
     <color name="color_text_background">#8ca4a4a4</color>
+    <color name="color_text_background_trans">#00ffffff</color>
 </resources>
