@@ -6,6 +6,7 @@
     android:id="@+id/linLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     tools:context="id.yuktanding.yuktanding.Login">
 
@@ -13,25 +14,24 @@
         android:id="@+id/image_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
         android:scaleType="centerCrop"
-        app:srcCompat="@color/yukTandingGreen"/>
+        app:srcCompat="@color/yukTandingGreen" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline"
         app:layout_constraintGuide_begin="@dimen/activity_guide"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="24dp"
-        tools:layout_editor_absoluteX="0dp" />
+        android:orientation="horizontal" />
 
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"
         android:id="@+id/user_in"
         android:layout_marginTop="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
         <android.support.design.widget.TextInputEditText
             style="@style/Widget.TextEdit"
             android:id="@+id/user_input_edit"
@@ -43,9 +43,9 @@
         style="@style/Widget.TextInputLayout"
         android:id="@+id/pass_in"
         android:layout_marginTop="6dp"
-        app:layout_constraintTop_toBottomOf="@+id/user_in"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_in">
         <android.support.design.widget.TextInputEditText
             style="@style/Widget.TextEdit"
             android:id="@+id/pass_input_edit"
