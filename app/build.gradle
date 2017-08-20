@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 25
@@ -26,6 +27,10 @@ dependencies {
     })
 
 //    Additional
+    //    Additional
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile 'com.android.support:design:25.3.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.roughike:bottom-bar:2.3.1'
     compile 'com.google.firebase:firebase-auth:10.0.1'
@@ -33,10 +38,7 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.0.1'
     compile 'com.google.firebase:firebase-storage:10.0.1'
     compile 'com.google.firebase:firebase-core:10.0.1'
-//    Additional
-
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
@@ -48,3 +50,6 @@ dependencies {
 
 
 apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+}

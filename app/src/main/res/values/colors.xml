@@ -2,6 +2,10 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#312c2c</color>
     <color name="yukTandingGreen">#77DD77</color>
+    <color name="recylerBackgroun">#b8c9b3</color>
+    <color name="tabTxtColor">#787878</color>
+    <color name="tabTxtColorSelect">#000000</color>
+    <color name="tabBackgound">#FFFFFF</color>
 </resources>
