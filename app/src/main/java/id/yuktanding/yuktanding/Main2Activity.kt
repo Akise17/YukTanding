@@ -1,5 +1,6 @@
 package id.yuktanding.yuktanding
 
+import android.content.Intent
 import android.support.design.widget.TabLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -11,6 +12,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
@@ -23,7 +25,6 @@ import android.widget.TextView
 class Main2Activity : AppCompatActivity() {
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
-
     private var mViewPager: ViewPager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +33,7 @@ class Main2Activity : AppCompatActivity() {
 
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+        supportActionBar?.setTitle(null)
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
@@ -43,6 +45,32 @@ class Main2Activity : AppCompatActivity() {
         val tabLayout = findViewById(R.id.tabs) as TabLayout
         tabLayout.setupWithViewPager(mViewPager)
 
+        val navigation = findViewById(R.id.navigation) as BottomNavigationView
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation.menu.getItem(1).isChecked = true //posisi nav bar aktif
+
+    }
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_pesanLapangan -> {
+                Log.d("BottomBar", "Navigation Pesan Lapangan")
+                val intent = Intent(this, PesanLapangan::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_menu -> {
+                Log.d("BottomBar", "Navigation Main Menu")
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_cariLawan -> {
+                Log.d("BottomBar", "Navigation Cari Lawan")
+                val intent = Intent(this, CariLawan::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
     }
 
 

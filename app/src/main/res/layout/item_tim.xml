@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_tim"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@mipmap/ic_launcher_round"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/txt_namaTim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lontong FC"
+            android:layout_marginLeft="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txt_statusTim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="P:35 W:13 D:2 L:20"
+            android:layout_marginLeft="8dp"
+            android:textSize="14sp"
+            android:layout_below="@+id/txt_namaTim"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -3,20 +3,10 @@ package id.yuktanding.yuktanding
 import android.os.Parcel
 import android.os.Parcelable
 
-/**
- * Created by Akise on 20/08/2017.
- */
-
 class ItemJadwal : Parcelable {
-
-    //Getter and Setter
     var namaLapangan: String? = null
     var jadwalLapangan: String? = null
     var imgLapangan: Int = 0
-
-    constructor() {}
-
-    //Constructor
 
     constructor(namaLapangan: String, jadwalLapangan: String, imgLapangan: Int) {
         this.namaLapangan = namaLapangan

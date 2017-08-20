@@ -1,6 +1,5 @@
 package id.yuktanding.yuktanding
 
-import android.content.ClipData
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -15,16 +14,15 @@ import java.util.ArrayList
 class ItemJadwalAdapter(private val items: ArrayList<ItemJadwal>, private val context: Context) : RecyclerView.Adapter<ItemJadwalAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         internal var name: TextView
         internal var waktu: TextView
-        internal var profile: ImageView
+        internal var imgLapangan: ImageView
 
         init {
 
             name = itemView.findViewById(R.id.txt_namaLapangan) as TextView
             waktu = itemView.findViewById(R.id.txt_jamMain) as TextView
-            profile = itemView.findViewById(R.id.img_profil) as ImageView
+            imgLapangan = itemView.findViewById(R.id.img_profil) as ImageView
         }
     }
 
@@ -37,11 +35,11 @@ class ItemJadwalAdapter(private val items: ArrayList<ItemJadwal>, private val co
         val item2 = items[position]
         holder.name.text = item2.namaLapangan
         holder.waktu.text = item2.jadwalLapangan
-        holder.profile.setImageResource(item2.imgLapangan)
+        holder.imgLapangan.setImageResource(item2.imgLapangan)
 
         holder.itemView.setOnClickListener { Log.d("Adapter", "Clicked Position: " + position) }
 
-        holder.profile.setOnClickListener { Log.d("Adapter", "Profile Clicked " + position) }
+        holder.imgLapangan.setOnClickListener { Log.d("Adapter", "Profile Clicked " + position) }
 
     }
 
