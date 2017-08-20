@@ -4,25 +4,31 @@
     tools:context="id.yuktanding.yuktanding.Main2Activity">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:orderInCategory="4"
+        android:title="Setting"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_settings2"
-        android:orderInCategory="101"
-        android:title="@string/action_settings"
+        android:id="@+id/action_logout"
+        android:orderInCategory="5"
+        android:title="Logout"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_settings3"
-        android:orderInCategory="102"
-        android:title="@string/action_settings"
+        android:id="@+id/action_faq"
+        android:orderInCategory="3"
+        android:title="FAQ"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_settings4"
-        android:orderInCategory="103"
-        android:title="@string/action_settings"
+        android:id="@+id/action_buatTim"
+        android:orderInCategory="1"
+        android:title="Buat Tim"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_promo"
+        android:orderInCategory="2"
+        android:title="Promo"
         app:showAsAction="never" />
 </menu>

@@ -118,6 +118,10 @@ class Main2Activity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            when (position){
+                0 -> return MenuFragment1()
+                1 -> return MenuFragment2()
+            }
             return PlaceholderFragment.newInstance(position + 1)
         }
 
@@ -130,7 +134,7 @@ class Main2Activity : AppCompatActivity() {
             when (position) {
                 0 -> return "Jadwal"
                 1 -> return "Profil"
-                2 -> return "Promo"
+                2 -> return "TIM"
             }
             return null
         }

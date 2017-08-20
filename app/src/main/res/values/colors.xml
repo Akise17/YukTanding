@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="yukTandingGreen">#77DD77</color>
+    <color name="recylerBackgroun">#b8c9b3</color>
 </resources>
