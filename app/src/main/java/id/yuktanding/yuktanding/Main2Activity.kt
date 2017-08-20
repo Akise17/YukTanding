@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -21,19 +22,8 @@ import android.widget.TextView
 
 class Main2Activity : AppCompatActivity() {
 
-    /**
-     * The [android.support.v4.view.PagerAdapter] that will provide
-     * fragments for each of the sections. We use a
-     * [FragmentPagerAdapter] derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * [android.support.v4.app.FragmentStatePagerAdapter].
-     */
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
-    /**
-     * The [ViewPager] that will host the section contents.
-     */
     private var mViewPager: ViewPager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -121,6 +111,7 @@ class Main2Activity : AppCompatActivity() {
             when (position){
                 0 -> return MenuFragment1()
                 1 -> return MenuFragment2()
+                2 -> return MenuFragment3()
             }
             return PlaceholderFragment.newInstance(position + 1)
         }
