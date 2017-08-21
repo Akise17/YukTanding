@@ -16,6 +16,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="login">Sign In</string>
-    <string name="google">Sign In with Google</string>
+    <string name="login">Masuk</string>
+    <string name="google">Masuk dengan Google</string>
 </resources>

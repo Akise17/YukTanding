@@ -25,7 +25,6 @@ class Login : AppCompatActivity() {
     val TAG = "Disini"
     val email = null
     val password = null
-    val serviceAccount = FileInputStream("path/to/serviceAccountKey.json")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +44,7 @@ class Login : AppCompatActivity() {
         uie = findViewById(R.id.user_input_edit) as TextInputEditText
         ib = findViewById(R.id.image_background) as ImageView
         btnSignin = findViewById(R.id.btn_Login) as Button
-        btnSignGoogle = findViewById(R.id.btn_Google) as Button
+        //btnSignGoogle = findViewById(R.id.btn_Google) as Button
 
         Log.d(TAG,"sebelum Picasso")
         Picasso.with(this)

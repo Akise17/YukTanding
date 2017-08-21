@@ -67,17 +67,25 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass_in"
+        android:backgroundTint="@color/oren"
         android:layout_marginTop="24dp"
         android:text="@string/login"
         android:id="@+id/btn_Login"/>
-    <Button
+
+    <com.google.android.gms.common.SignInButton
         style="@style/tombol"
+        android:id="@+id/g_signin"
+        android:layout_marginTop="6dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Login"
-        android:layout_marginTop="6dp"
-        android:id="@+id/btn_Google"
-        android:background="@drawable/btn_google_signin_dark_normal_ldpi"
-        android:text="@string/google"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_Login">
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="@dimen/Button"
+            android:id="@+id/btn_Google"
+            android:background="@drawable/btn_google_signin_dark_normal_ldpi"
+            android:text="@string/google"/>
+    </com.google.android.gms.common.SignInButton>
+
 
 </android.support.constraint.ConstraintLayout>
