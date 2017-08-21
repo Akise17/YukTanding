@@ -7,14 +7,11 @@ import android.support.design.widget.TextInputLayout
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
-import com.google.firebase.auth.AuthCredential
 import com.squareup.picasso.Picasso
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-
-
+import com.google.firebase.FirebaseApp
+import com.google.firebase.FirebaseOptions
+import java.io.FileInputStream
 
 
 class Login : AppCompatActivity() {
@@ -28,6 +25,7 @@ class Login : AppCompatActivity() {
     val TAG = "Disini"
     val email = null
     val password = null
+    val serviceAccount = FileInputStream("path/to/serviceAccountKey.json")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +33,7 @@ class Login : AppCompatActivity() {
 
         //======================================================
         //firebase
+
 
         //firebase
         // ======================================================
