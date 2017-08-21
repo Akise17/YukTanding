@@ -11,4 +11,5 @@
     <color name="color_text">#FFF</color>
     <color name="color_text_background">#8ca4a4a4</color>
     <color name="color_text_background_trans">#00ffffff</color>
+    <color name="google_red">#dd4b39</color>
 </resources>

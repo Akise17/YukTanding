@@ -8,4 +8,5 @@
     <dimen name="activity_guide">32dp</dimen>
     <dimen name="input_width">220dp</dimen>
     <dimen name="text_padding">16dp</dimen>
+    <dimen name="Button">200dp</dimen>
 </resources>

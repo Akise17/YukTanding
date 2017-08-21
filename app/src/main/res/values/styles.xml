@@ -38,4 +38,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="tombol">
+        <item name="android:layout_height">@dimen/wrap_content</item>
+        <item name="android:layout_width">@dimen/Button</item>
+    </style>
+
 </resources>
