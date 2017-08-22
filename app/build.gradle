@@ -31,23 +31,25 @@ dependencies {
 
     //kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-
+    //picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
+    //bottombar
     compile 'com.roughike:bottom-bar:2.3.1'
-    //compile 'com.google.android.gms:play-services-auth:11.2.0'
-    compile 'com.google.firebase:firebase-auth:10.0.1'
-    compile 'com.google.firebase:firebase-database:10.0.1'
-    compile 'com.google.firebase:firebase-messaging:10.0.1'
-    compile 'com.google.firebase:firebase-storage:10.0.1'
-    compile 'com.google.firebase:firebase-core:10.0.1'
+    //firebase
+    compile 'com.google.firebase:firebase-auth:11.0.2'
+    compile 'com.google.firebase:firebase-core:11.0.2'
+    //android
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //fuel
+    compile 'com.github.kittinunf.fuel:fuel-android:1.1.0'
     testCompile 'junit:junit:4.12'
 }
 
-apply plugin: 'com.google.gms.google-services'
 repositories {
     mavenCentral()
+    jcenter()
 }
+apply plugin: 'com.google.gms.google-services'

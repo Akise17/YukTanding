@@ -7,12 +7,9 @@ import android.support.design.widget.TextInputLayout
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import com.github.kittinunf.fuel.Fuel
 import com.squareup.picasso.Picasso
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.FirebaseApp
-import com.google.firebase.FirebaseOptions
-import java.io.FileInputStream
-
 
 class Login : AppCompatActivity() {
     private var ib: ImageView?=null
@@ -29,6 +26,18 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG,"onCreate")
+
+        //kittinunf
+        Fuel.get("http://yuktanding.id/img/test.html").response { request, response, result ->
+            println(request)
+            println(response)
+            val (bytes, error) = result
+            Log.d(TAG,"dalam kitti "+response)
+            if (bytes != null) {
+                println(bytes)
+            }
+        }
+        Log.d(TAG,"setelah kitti")
 
         //======================================================
         //firebase
