@@ -10,6 +10,10 @@ import android.widget.ImageView
 import com.github.kittinunf.fuel.Fuel
 import com.squareup.picasso.Picasso
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.AuthResult
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+
 
 class Login : AppCompatActivity() {
     private var ib: ImageView?=null
@@ -20,13 +24,16 @@ class Login : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
     private val mAuthListener: FirebaseAuth.AuthStateListener? = null
     val TAG = "Disini"
-    val email = null
-    val password = null
+    val email = "ekkyhiw@gmail.com"
+    val password = "qwerty321456"
 
+    //==============================================================================================
+    //onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG,"onCreate")
 
+        //======================================================
         //kittinunf
         Fuel.get("http://yuktanding.id/img/test.html").response { request, response, result ->
             println(request)
@@ -38,10 +45,15 @@ class Login : AppCompatActivity() {
             }
         }
         Log.d(TAG,"setelah kitti")
+        //kittinunf
+        //======================================================
 
         //======================================================
         //firebase
+        mAuth = FirebaseAuth.getInstance();
 
+        Log.d(TAG,"sebelum mAuth")
+        createUser("ekkyhiw@gmail.com","sabuncolek")
 
         //firebase
         // ======================================================
@@ -64,6 +76,38 @@ class Login : AppCompatActivity() {
         Log.d(TAG,"setelah Picasso")
     }
 
+
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = mAuth?.getCurrentUser()
+        Log.d(TAG,"onStart"+currentUser)
+    }
+
+    private fun createUser(uEmail:String, uPass:String) {
+
+        mAuth?.createUserWithEmailAndPassword(uEmail, uPass)
+                ?.addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
+                    override fun onComplete(task: Task<AuthResult>) {
+                        Log.d(TAG,"dalem onClomplete")
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success")
+                            val user = mAuth?.getCurrentUser()
+//                            updateUI(user)
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException())
+//                            Toast.makeText(this@EmailPasswordActivity, "Authentication failed.",
+//                                    Toast.LENGTH_SHORT).show()
+//                            updateUI(null)
+                        }
+
+                        // ...
+                    }
+                })
+
+    }
 
 }
 
