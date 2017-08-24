@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context="id.yuktanding.yuktanding.Login">
+    tools:context="id.yuktanding.yuktanding.SignUp">
 
     <ImageView
-        android:id="@+id/image_background_log"
+        android:id="@+id/image_background_sign"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="true"
@@ -21,44 +19,58 @@
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guideline"
+        android:id="@+id/guideline_sign"
         app:layout_constraintGuide_begin="@dimen/activity_guide"
         android:orientation="horizontal"/>
 
     <ImageView
-        android:id="@+id/logo_log"
+        android:id="@+id/logo_sign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/yuklogo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_sign" />
 
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"
-        android:id="@+id/user_input_layout_log"
+        android:id="@+id/user_input_layout_sign"
         android:layout_marginTop="48dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_log">
+        app:layout_constraintTop_toBottomOf="@+id/logo_sign">
         <android.support.design.widget.TextInputEditText
             style="@style/Widget.TextEdit"
-            android:id="@+id/user_input_edit_log"
-            android:hint="@string/user_hint"
+            android:id="@+id/user_input_edit_sign"
+            android:hint="@string/create_username"
             android:inputType="text" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"
-        android:id="@+id/pass_in_log"
+        android:id="@+id/pass_in_sign"
         android:layout_marginTop="6dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_input_layout_log">
+        app:layout_constraintTop_toBottomOf="@+id/user_input_layout_sign">
         <android.support.design.widget.TextInputEditText
             style="@style/Widget.TextEdit"
-            android:id="@+id/pass_input_edit_log"
+            android:id="@+id/pass_input_edit_sign"
             android:hint="@string/pass_hint"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.TextInputLayout"
+        android:id="@+id/pass_re_sign"
+        android:layout_marginTop="6dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pass_in_sign">
+        <android.support.design.widget.TextInputEditText
+            style="@style/Widget.TextEdit"
+            android:id="@+id/pass_re_edit_sign"
+            android:hint="@string/retype_password"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
@@ -66,26 +78,10 @@
         style="@style/tombol"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass_in_log"
-        android:backgroundTint="@color/oren"
+        app:layout_constraintTop_toBottomOf="@+id/pass_re_sign"
+        android:background="@drawable/bentuk_tmbl"
         android:layout_marginTop="24dp"
-        android:text="@string/login"
-        android:id="@+id/btn_Login"/>
-
-    <com.google.android.gms.common.SignInButton
-        style="@style/tombol"
-        android:id="@+id/g_signin_log"
-        android:layout_marginTop="6dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Login">
-        <Button
-            android:layout_height="wrap_content"
-            android:layout_width="@dimen/Button"
-            android:id="@+id/btn_Google_log"
-            android:background="@drawable/btn_google_signin_dark_normal_ldpi"
-            android:text="@string/google"/>
-    </com.google.android.gms.common.SignInButton>
-
+        android:text="@string/daftar"
+        android:id="@+id/btn_Login_sign"/>
 
 </android.support.constraint.ConstraintLayout>

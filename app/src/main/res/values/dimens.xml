@@ -9,4 +9,5 @@
     <dimen name="input_width">220dp</dimen>
     <dimen name="text_padding">16dp</dimen>
     <dimen name="Button">220dp</dimen>
+    <dimen name="corner_rad">4dp</dimen>
 </resources>

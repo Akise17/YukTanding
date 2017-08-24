@@ -24,8 +24,6 @@ class Login : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
     private val mAuthListener: FirebaseAuth.AuthStateListener? = null
     val TAG = "Disini"
-    val email = "ekkyhiw@gmail.com"
-    val password = "qwerty321456"
 
     //==============================================================================================
     //onCreate
@@ -48,12 +46,14 @@ class Login : AppCompatActivity() {
         //kittinunf
         //======================================================
 
+
+
         //======================================================
         //firebase
         mAuth = FirebaseAuth.getInstance();
 
         Log.d(TAG,"sebelum mAuth")
-        createUser("ekkyhiw@gmail.com","sabuncolek")
+        //createUser("ekky@yuktanding.id","sabuncolek")
 
         //firebase
         // ======================================================
@@ -61,9 +61,9 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         Log.d(TAG,"setelah layout")
 
-        uil = findViewById(R.id.user_input_layout) as TextInputLayout
-        uie = findViewById(R.id.user_input_edit) as TextInputEditText
-        ib = findViewById(R.id.image_background) as ImageView
+        uil = findViewById(R.id.user_input_layout_log) as TextInputLayout
+        uie = findViewById(R.id.user_input_edit_log) as TextInputEditText
+        ib = findViewById(R.id.image_background_log) as ImageView
         btnSignin = findViewById(R.id.btn_Login) as Button
         //btnSignGoogle = findViewById(R.id.btn_Google) as Button
 
@@ -98,8 +98,6 @@ class Login : AppCompatActivity() {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException())
-//                            Toast.makeText(this@EmailPasswordActivity, "Authentication failed.",
-//                                    Toast.LENGTH_SHORT).show()
 //                            updateUI(null)
                         }
 
@@ -108,7 +106,6 @@ class Login : AppCompatActivity() {
                 })
 
     }
-
 }
 
 
