@@ -72,10 +72,9 @@ class Login : AppCompatActivity() {
                 .load("https://yuktanding.id/img/lap.jpg")
                 .placeholder(R.drawable.lap1)
                 .error(R.drawable.lap1)
-                .into(ib);
+                .into(ib)
         Log.d(TAG,"setelah Picasso")
     }
-
 
     public override fun onStart() {
         super.onStart()

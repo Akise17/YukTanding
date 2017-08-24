@@ -31,7 +31,7 @@ class SignUp : AppCompatActivity() {
                 .load("https://yuktanding.id/img/sign.jpg") //Created by Pressfoto - Freepik.com
                 .placeholder(R.drawable.lap1)
                 .error(R.drawable.lap1)
-                .into(ib);
+                .into(ib)
         Log.d(TAG,"setelah Picasso")
     }
 }
