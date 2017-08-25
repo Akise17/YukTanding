@@ -35,7 +35,7 @@ class SignUp : AppCompatActivity() {
 
         kitti("http://yuktanding.id/img/test.html")
         backgrnd() //ganti background
-        createUser("ahmad.fauzan1603@gmail.com", "12345678")
+        //createUser("ahmad.fauzan1603@gmail.com", "12345678")
     }
 
     fun backgrnd() {

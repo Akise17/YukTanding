@@ -33,20 +33,9 @@ class Login : AppCompatActivity() {
 
         //======================================================
         //kittinunf
-        Fuel.get("http://yuktanding.id/img/test.html").response { request, response, result ->
-            println(request)
-            println(response)
-            val (bytes, error) = result
-            Log.d(TAG,"dalam kitti "+response)
-            if (bytes != null) {
-                println(bytes)
-            }
-        }
-        Log.d(TAG,"setelah kitti")
+        kitti("google.com")
         //kittinunf
         //======================================================
-
-
 
         //======================================================
         //firebase
@@ -63,17 +52,9 @@ class Login : AppCompatActivity() {
 
         uil = findViewById(R.id.user_input_layout_log) as TextInputLayout
         uie = findViewById(R.id.user_input_edit_log) as TextInputEditText
-        ib = findViewById(R.id.image_background_log) as ImageView
+        //ib = findViewById(R.id.image_background_log) as ImageView
         btnSignin = findViewById(R.id.btn_Login) as Button
         //btnSignGoogle = findViewById(R.id.btn_Google) as Button
-
-        Log.d(TAG,"sebelum Picasso")
-        Picasso.with(this)
-                .load("https://yuktanding.id/img/lap.jpg")
-                .placeholder(R.drawable.lap1)
-                .error(R.drawable.lap1)
-                .into(ib)
-        Log.d(TAG,"setelah Picasso")
     }
 
     public override fun onStart() {
@@ -104,6 +85,32 @@ class Login : AppCompatActivity() {
                     }
                 })
 
+    }
+
+    fun backgrnd() {
+        Log.d(TAG, "sebelum Picasso")
+        Picasso.with(this)
+                .load("https://yuktanding.id/img/sign.jpg") //Created by Pressfoto - Freepik.com
+                .placeholder(R.drawable.lap1)
+                .error(R.drawable.lap1)
+                .into(ib)
+        Log.d(TAG, "setelah Picasso")
+    }
+
+    fun kitti(URL: String) {
+        //======================================================
+        //kittinunf
+        Fuel.get(URL).response { request, response, result ->
+            println(request)
+            println(response)
+            val (bytes, error) = result
+            Log.d(TAG, "dalam kitti " + response)
+            if (bytes != null) {
+                println(bytes)
+            }
+        }
+        //kittinunf
+        //======================================================
     }
 }
 

@@ -21,6 +21,15 @@
         <item name="android:layout_width">@dimen/input_width</item>
         <item name="android:textColorHint">@color/color_input_hint</item>
         <item name="android:background">@color/color_text_background</item>
+        <item name="android:textColor">@color/color_text</item>
+    </style>
+
+    <style name="Widget.TextInputLayoutFull">
+        <item name="android:layout_height">@dimen/wrap_content</item>
+        <item name="android:layout_width">@dimen/input_width_full</item>
+        <item name="android:textColorHint">@color/color_input_hint</item>
+        <item name="android:background">@color/color_text_background</item>
+        <item name="android:textColor">@color/color_text</item>
     </style>
 
     <style name="Widget.TextEdit">
@@ -36,6 +45,13 @@
         <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/color_text</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ColaFloat">
+        <item name="android:textSize">15sp</item>
+        <item name="colorControlNormal">@color/color_input_hint</item>
+        <item name="colorControlHighlight">@color/color_input_hint</item>
+        <item name="colorControlActivated">@color/color_input_hint</item>
     </style>
 
     <style name="tombol">

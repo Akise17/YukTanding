@@ -2,8 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
     tools:context="id.yuktanding.yuktanding.SignUp">
@@ -12,76 +12,116 @@
         android:id="@+id/image_background_sign"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:clickable="true"
         android:focusable="true"
         android:scaleType="centerCrop"
         app:srcCompat="@color/background_prime"/>
 
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline_sign"
-        app:layout_constraintGuide_begin="@dimen/activity_guide"
-        android:orientation="horizontal"/>
+    <ScrollView
+        android:id="@+id/ScrollSign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/logo_sign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/yuklogo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_sign" />
 
-    <android.support.design.widget.TextInputLayout
-        style="@style/Widget.TextInputLayout"
-        android:id="@+id/user_input_layout_sign"
-        android:layout_marginTop="48dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_sign">
-        <android.support.design.widget.TextInputEditText
-            style="@style/Widget.TextEdit"
-            android:id="@+id/user_input_edit_sign"
-            android:hint="@string/create_username"
-            android:inputType="text" />
-    </android.support.design.widget.TextInputLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true">
 
-    <android.support.design.widget.TextInputLayout
-        style="@style/Widget.TextInputLayout"
-        android:id="@+id/pass_in_sign"
-        android:layout_marginTop="6dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_input_layout_sign">
-        <android.support.design.widget.TextInputEditText
-            style="@style/Widget.TextEdit"
-            android:id="@+id/pass_input_edit_sign"
-            android:hint="@string/pass_hint"
-            android:inputType="textPassword" />
-    </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        style="@style/Widget.TextInputLayout"
-        android:id="@+id/pass_re_sign"
-        android:layout_marginTop="6dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass_in_sign">
-        <android.support.design.widget.TextInputEditText
-            style="@style/Widget.TextEdit"
-            android:id="@+id/pass_re_edit_sign"
-            android:hint="@string/retype_password"
-            android:inputType="textPassword" />
-    </android.support.design.widget.TextInputLayout>
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="@dimen/activity_guide"/>
 
-    <Button
-        style="@style/tombol"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass_re_sign"
-        android:background="@drawable/bentuk_tmbl"
-        android:layout_marginTop="24dp"
-        android:text="@string/daftar"
-        android:id="@+id/btn_Login_sign"/>
+            <ImageView
+                android:id="@+id/logo_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/yuklogo"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_sign" />
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/email_input_layout_sign"
+                style="@style/Widget.TextInputLayout"
+                android:layout_marginTop="48dp"
+                app:layout_constraintHorizontal_weight="1"
+                app:hintTextAppearance="@style/ColaFloat"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/user_input_layout_sign"
+                app:layout_constraintTop_toBottomOf="@+id/logo_sign">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/email_input_edit_sign"
+                    style="@style/Widget.TextEdit"
+                    android:hint="@string/email"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/user_input_layout_sign"
+                style="@style/Widget.TextInputLayout"
+                android:layout_marginTop="48dp"
+                app:layout_constraintHorizontal_weight="1"
+                app:hintTextAppearance="@style/ColaFloat"
+                app:layout_constraintLeft_toRightOf="@+id/email_input_layout_sign"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo_sign">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/user_input_edit_sign"
+                    style="@style/Widget.TextEdit"
+                    android:hint="@string/create_username"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/pass_in_sign"
+                style="@style/Widget.TextInputLayoutFull"
+                android:layout_marginTop="6dp"
+                app:hintTextAppearance="@style/ColaFloat"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_input_layout_sign">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/pass_input_edit_sign"
+                    style="@style/Widget.TextEdit"
+                    android:hint="@string/pass_hint"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/pass_re_sign"
+                style="@style/Widget.TextInputLayoutFull"
+                android:layout_marginTop="6dp"
+                app:hintTextAppearance="@style/ColaFloat"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pass_in_sign">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/pass_re_edit_sign"
+                    style="@style/Widget.TextEdit"
+                    android:hint="@string/retype_password"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_Login_sign"
+                style="@style/tombol"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bentuk_tmbl"
+                android:text="@string/daftar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pass_re_sign"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

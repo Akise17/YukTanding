@@ -19,6 +19,7 @@
     <string name="login">Masuk</string>
     <string name="google">Masuk dengan Google</string>
     <string name="daftar">Daftar</string>
-    <string name="retype_password">retype password</string>
-    <string name="create_username">Create Username</string>
+    <string name="retype_password">Confirm password</string>
+    <string name="create_username">Username</string>
+    <string name="email">Email</string>
 </resources>
