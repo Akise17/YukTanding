@@ -8,6 +8,7 @@
 
     <color name="oren">#ffa726</color>
     <color name="background_prime">#000000</color>
+    <color name="color_text_black">#000000</color>
     <color name="color_input_hint">#FFF</color>
     <color name="color_text_highlight">#ffcc80</color>
     <color name="color_text">#FFF</color>
@@ -17,4 +18,5 @@
     <color name="color_con_normal">#bdbdbd</color>
     <color name="color_con_activated">#efebe9</color>
     <color name="color_con_highlight">#ffcc80</color>
+    <color name="link">#3949ab</color>
 </resources>
