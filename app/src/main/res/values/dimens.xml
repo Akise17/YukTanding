@@ -6,9 +6,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_guide">32dp</dimen>
-    <dimen name="input_width">130dp</dimen>
-    <dimen name="input_width_full">200dp</dimen>
+    <dimen name="input_width">145dp</dimen>
+    <dimen name="input_width_full">240dp</dimen>
     <dimen name="text_padding">16dp</dimen>
-    <dimen name="Button">200dp</dimen>
+    <dimen name="Button">240dp</dimen>
     <dimen name="corner_rad">8dp</dimen>
 </resources>
