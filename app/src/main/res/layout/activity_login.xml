@@ -15,7 +15,8 @@
         android:clickable="true"
         android:focusable="true"
         android:scaleType="centerCrop"
-        app:srcCompat="@color/background_prime"/>
+        android:background="@color/yukTandingOren"
+        app:srcCompat="@color/yukTandingOren"/>
 
     <ScrollView
         android:id="@+id/ScrollLog"

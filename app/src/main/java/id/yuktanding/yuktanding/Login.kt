@@ -73,9 +73,10 @@ class Login : AppCompatActivity() {
         //btnSignGoogle = findViewById(R.id.btn_Google) as Button
 
         //kitti("google.com")
-        backgrnd()
+        //backgrnd()
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance()
+        //mAuth!!.signOut()
         //createUser("ekky@yuktanding.id","sabuncolek")
 
     }
@@ -90,9 +91,9 @@ class Login : AppCompatActivity() {
     fun backgrnd() {
         Log.d(TAG, "sebelum Picasso")
         Picasso.with(this)
-                .load("https://yuktanding.id/img/lap.jpg")
-                .placeholder(R.drawable.lap1)
-                .error(R.drawable.lap1)
+                .load("https://yuktanding.id/img/lapOri.jpg")
+                .placeholder(R.color.yukTandingOren)
+                .error(R.color.yukTandingOren)
                 .into(ib)
         Log.d(TAG, "setelah Picasso")
     }
