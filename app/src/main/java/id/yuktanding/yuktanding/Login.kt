@@ -16,16 +16,26 @@ import android.text.method.LinkMovementMethod
 import android.text.Spanned
 import android.text.TextPaint
 import android.content.Intent
+import android.support.annotation.NonNull
 import android.view.View
 import android.widget.Button
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.ResultCallback
 import com.google.android.gms.common.api.Status
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.GoogleAuthProvider
+//import com.facebook.FacebookSdk
+//import com.facebook.appevents.AppEventsLogger
+
 
 class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     private var ib: ImageView? = null
@@ -63,19 +73,20 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         initGso()
 
         btnSignGoogle!!.setOnClickListener {
+            Log.d(TAG," Google sign in diklik")
             signIn()
         }
-
-        //spannable string (link signup)
+        btnSignin!!.setOnClickListener {
+            Log.d(TAG," tombol masuk diklik")
+            signOut()
+        }
         span()
-        //kitti("google.com")
-        //backgrnd()
-        //mAuth!!.signOut()
-        //createUser("ekky@yuktanding.id","sabuncolek")
     }
     //oncreate end
     //==============================================================================================
 
+    //==============================================================================================
+    //google sign in start
     private fun initGso() {
         Log.d(TAG, "sebelum gso")
         // [START configure_signin]
@@ -85,6 +96,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .requestProfile()
+                .requestId()
                 .build()
         // [END configure_signin]
 
@@ -128,12 +140,47 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         }
     }
 
+    // [START auth_with_google]
+    private fun firebaseAuthWithGoogle(acct : GoogleSignInAccount) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId())
+
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+        mAuth!!.signInWithCredential(credential)
+            .addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
+                    override fun onComplete(task: Task<AuthResult>) {
+
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            var user = mAuth!!.getCurrentUser();
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            //updateUI(null);
+                        }
+                    }
+                });
+    }
+    // [END auth_with_google]
+
     private fun handleSignInResult(result: GoogleSignInResult) {
         Log.d(TAG, "handleSignInResult:" + result.isSuccess)
         if (result.isSuccess) {
             // Signed in successfully, show authenticated UI.
             val acct = result.signInAccount
             Log.d(TAG, "" + acct!!.displayName)
+            Log.d(TAG, "" + acct!!.account)
+            Log.d(TAG, "" + acct!!.email)
+            Log.d(TAG, "" + acct!!.id)
+            Log.d(TAG, "" + acct!!.idToken)
+            Log.d(TAG, "" + acct!!.serverAuthCode)
+            val account = result.signInAccount
+            if (account != null) {
+                firebaseAuthWithGoogle(account)
+            }
+            //createUser(acct.email!!,acct.id!!)
+
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct!!.displayName))
             //updateUI(true)
         } else {
@@ -179,8 +226,12 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
             }
         }
     }
+    //google sign in
+    //==============================================================================================
 
 
+    //==============================================================================================
+    //text view link start
     private fun span() {
         val ss = SpannableString("Belum punya akun? Sign Up")
         val clickableSpan = object : ClickableSpan() {
@@ -200,7 +251,37 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         link!!.setText(ss)
         link!!.movementMethod = LinkMovementMethod.getInstance()
     }
+    //text view link end
+    //==============================================================================================
 
+    //==============================================================================================
+    //firebase createUser start
+    private fun createUser(uEmail: String, uPass: String) {
+
+        mAuth?.createUserWithEmailAndPassword(uEmail, uPass)
+                ?.addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
+                    override fun onComplete(task: Task<AuthResult>) {
+                        Log.d(TAG, "dalem createUser onComplete")
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success")
+                            val user=mAuth?.getCurrentUser()
+                            user?.sendEmailVerification()
+                            Log.d(TAG, "verifikasi"+user)
+//                            updateUI(user)
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure")
+//                            updateUI(null)
+                        }
+                    }
+                })
+    }
+    //firebase createUser end
+    //==============================================================================================
+
+    //==============================================================================================
+    //picasso change background start
     fun backgrnd() {
         Log.d(TAG, "sebelum Picasso")
         Picasso.with(this)
@@ -210,7 +291,11 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
                 .into(ib)
         Log.d(TAG, "setelah Picasso")
     }
+    //picasso change background end
+    //==============================================================================================
 
+    //==============================================================================================
+    //kitti start
     fun kitti(URL: String) {
         Fuel.get(URL).response { request, response, result ->
             println(request)
@@ -222,6 +307,8 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
             }
         }
     }
+    //kitti end
+    //==============================================================================================
 }
 
 
