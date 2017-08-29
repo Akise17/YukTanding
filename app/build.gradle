@@ -41,6 +41,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.github.kittinunf.fuel:fuel-android:1.1.0'
     compile 'com.google.android.gms:play-services-auth:11.0.4'
+ //   compile 'com.facebook.android:facebook-android-sdk:4.26.1'
     testCompile 'junit:junit:4.12'
 }
 

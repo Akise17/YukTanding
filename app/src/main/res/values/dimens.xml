@@ -10,7 +10,7 @@
     <dimen name="input_width_full">240dp</dimen>
     <dimen name="text_padding">16dp</dimen>
     <dimen name="Button">240dp</dimen>
-    <dimen name="corner_rad">8dp</dimen>
+    <dimen name="corner_rad">4dp</dimen>
     <dimen name="margin_edittext">8dp</dimen>
     <dimen name="margin_edittext_err">16dp</dimen>
 </resources>

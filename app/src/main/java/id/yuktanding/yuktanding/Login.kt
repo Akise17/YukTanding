@@ -16,7 +16,9 @@ import android.text.method.LinkMovementMethod
 import android.text.Spanned
 import android.text.TextPaint
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.support.annotation.NonNull
+import android.support.constraint.ConstraintLayout
 import android.view.View
 import android.widget.Button
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -33,15 +35,16 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.GoogleAuthProvider
-//import com.facebook.FacebookSdk
-//import com.facebook.appevents.AppEventsLogger
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 
 class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
-    private var ib: ImageView? = null
     private var link: TextView? = null
+    private var ib: ImageView? =null
     private var uie: TextInputEditText? = null
     private var uil: TextInputLayout? = null
+    private var conlay: ConstraintLayout?= null
     private var btnSignin: Button? = null
     private var btnSignGoogle: SignInButton? = null
     var mAuth: FirebaseAuth? = null
@@ -49,21 +52,33 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     val RC_SIGN_IN = 100
     //private val mAuthListener: FirebaseAuth.AuthStateListener? = null
     val TAG = "Disini"
+    //phoneAuth
+    private val KEY_VERIFY_IN_PROGRESS = "key_verify_in_progress"
+    private val STATE_INITIALIZED = 1
+    private val STATE_CODE_SENT = 2
+    private val STATE_VERIFY_FAILED = 3
+    private val STATE_VERIFY_SUCCESS = 4
+    private val STATE_SIGNIN_FAILED = 5
+    private val STATE_SIGNIN_SUCCESS = 6
+    private var mVerificationInProgress = false
+    private var mVerificationId=""
+//    private PhoneAuthProvider.ForceResendingToken mResendToken;
+//    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     //==============================================================================================
     //onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate")
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_login_rev)
         Log.d(TAG, "setelah layout")
 
         //uil = findViewById(R.id.user_input_layout_log) as TextInputLayout
         //uie = findViewById(R.id.user_input_edit_log) as TextInputEditText
+        conlay = findViewById(R.id.constraint_log) as ConstraintLayout
         btnSignin = findViewById(R.id.btn_Login) as Button
         btnSignGoogle = findViewById(R.id.g_signin_log) as SignInButton
-        ib = findViewById(R.id.image_background_log) as ImageView
-        link = findViewById(R.id.txt_tanya) as TextView
+        //link = findViewById(R.id.txt_tanya) as TextView
         Log.d(TAG, "setelah deklarasi tombol")
 
         val intent = Intent(this, SignUp::class.java)
@@ -80,7 +95,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
             Log.d(TAG," tombol masuk diklik")
             signOut()
         }
-        span()
+        //span()
     }
     //oncreate end
     //==============================================================================================
@@ -282,15 +297,17 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     //==============================================================================================
     //picasso change background start
-    fun backgrnd() {
+    /*
+    fun picas(imgURL: String, uview: Drawable) {
         Log.d(TAG, "sebelum Picasso")
         Picasso.with(this)
-                .load("https://yuktanding.id/img/lapOri.jpg")
+                .load(imgURL)
                 .placeholder(R.color.yukTandingOren)
                 .error(R.color.yukTandingOren)
-                .into(ib)
+                .into()
         Log.d(TAG, "setelah Picasso")
     }
+*/
     //picasso change background end
     //==============================================================================================
 
