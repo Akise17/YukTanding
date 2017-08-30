@@ -11,7 +11,7 @@ import android.view.ViewGroup
 
 import java.util.ArrayList
 
-class MenuFragment1 : Fragment() {
+class FragmentMenu1 : Fragment() {
 
     internal lateinit var jadwalArrayList: ArrayList<ItemJadwal>
     internal lateinit var jadwalRecyclerView: RecyclerView

@@ -4,22 +4,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import android.view.MenuItem
+import android.util.Log
 import android.widget.TextView
 
-class CariLawan : AppCompatActivity() {
+class ActivityCariLawan : AppCompatActivity() {
 
     private var mTextMessage: TextView? = null
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_pesanLapangan -> {
-                val intent = Intent(this, PesanLapangan::class.java)
+                Log.d("yukTanding", "Navigation Pesan Lapangan Cari")
+                val intent = Intent(this, ActivityPesanLapangan::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_menu -> {
-                val intent = Intent(this, Main2Activity::class.java)
+                Log.d("yukTanding", "Navigation Main Menu Cari")
+                val intent = Intent(this, ActivityMain::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }

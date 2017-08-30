@@ -3,13 +3,11 @@ package id.yuktanding.yuktanding
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
 
-class PesanLapangan : AppCompatActivity() {
+class ActivityPesanLapangan : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +30,15 @@ class PesanLapangan : AppCompatActivity() {
             }
             R.id.navigation_menu -> {
                 Log.d("BottomBar", "Navigation Main Menu")
-                val intent = Intent(this, Main2Activity::class.java)
+                val intent = Intent(this, ActivityMain::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_cariLawan -> {
                 Log.d("BottomBar", "Navigation Cari Lawan")
-                val intent = Intent(this, CariLawan::class.java)
+                val intent = Intent(this, ActivityCariLawan::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }

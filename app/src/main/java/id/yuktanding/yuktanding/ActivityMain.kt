@@ -2,8 +2,6 @@ package id.yuktanding.yuktanding
 
 import android.content.Intent
 import android.support.design.widget.TabLayout
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 
@@ -22,7 +20,7 @@ import android.view.ViewGroup
 
 import android.widget.TextView
 
-class Main2Activity : AppCompatActivity() {
+class ActivityMain : AppCompatActivity() {
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     private var mViewPager: ViewPager? = null
@@ -51,21 +49,29 @@ class Main2Activity : AppCompatActivity() {
 
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        val navigation = findViewById(R.id.navigation) as BottomNavigationView
+        navigation.menu.getItem(1).isChecked = true
+    }
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_pesanLapangan -> {
-                Log.d("BottomBar", "Navigation Pesan Lapangan")
-                val intent = Intent(this, PesanLapangan::class.java)
+                Log.d("yukTanding", "Navigation Pesan Lapangan Main")
+                val intent = Intent(this, ActivityPesanLapangan::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_menu -> {
-                Log.d("BottomBar", "Navigation Main Menu")
+                Log.d("yukTanding", "Navigation Main Menu Main")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_cariLawan -> {
-                Log.d("BottomBar", "Navigation Cari Lawan")
-                val intent = Intent(this, CariLawan::class.java)
+                Log.d("yukTanding", "Navigation Cari Lawan Main")
+                val intent = Intent(this, ActivityCariLawan::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
@@ -86,6 +92,13 @@ class Main2Activity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
 
+        when(id){
+            R.id.action_buatTim -> {
+                Log.d("yukTanding", "BuatTim")
+                val intent = Intent(this, ActivityBuatTim::class.java)
+                startActivity(intent)
+            }
+        }
 
         return if (id == R.id.action_settings) {
             true
@@ -137,9 +150,9 @@ class Main2Activity : AppCompatActivity() {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             when (position){
-                0 -> return MenuFragment1()
-                1 -> return MenuFragment2()
-                2 -> return MenuFragment3()
+                0 -> return FragmentMenu1()
+                1 -> return FragmentMenu2()
+                2 -> return FragmentMenu3()
             }
             return PlaceholderFragment.newInstance(position + 1)
         }

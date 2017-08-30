@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class MenuFragment2 extends Fragment {
+public class FragmentMenu2 extends Fragment {
 
 
-    public MenuFragment2() {
+    public FragmentMenu2() {
         // Required empty public constructor
     }
 
