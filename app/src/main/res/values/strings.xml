@@ -29,4 +29,10 @@
     <string name="last_name">Last name</string>
     <string name="mohon_email">Email salah</string>
     <string name="masuk_dengan">Masuk Dengan :</string>
+    <string name="title_activity_menu_home">MenuHome</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

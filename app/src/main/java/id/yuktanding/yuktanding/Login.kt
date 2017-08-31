@@ -19,6 +19,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.support.annotation.NonNull
 import android.support.constraint.ConstraintLayout
+import android.support.design.widget.Snackbar
 import android.view.View
 import android.widget.Button
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -62,8 +63,8 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     private val STATE_SIGNIN_SUCCESS = 6
     private var mVerificationInProgress = false
     private var mVerificationId=""
-//    private PhoneAuthProvider.ForceResendingToken mResendToken;
-//    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
+    private var mResendToken: PhoneAuthProvider.ForceResendingToken?= null
+    private var mCallbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks?= null
 
     //==============================================================================================
     //onCreate
@@ -81,7 +82,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         //link = findViewById(R.id.txt_tanya) as TextView
         Log.d(TAG, "setelah deklarasi tombol")
 
-        val intent = Intent(this, SignUp::class.java)
+        val intente = Intent(this, MenuHome::class.java)
 
         Log.d(TAG, "setelah deklarasi intent")
         mAuth = FirebaseAuth.getInstance()
@@ -95,7 +96,6 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
             Log.d(TAG," tombol masuk diklik")
             signOut()
         }
-        //span()
     }
     //oncreate end
     //==============================================================================================
@@ -141,7 +141,8 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = mAuth?.getCurrentUser()
-        Log.d(TAG, "onStart" + currentUser)
+        Log.d(TAG, "onStart " + currentUser)
+        Log.d(TAG, "onStart " + currentUser)
     }
 
 
@@ -150,6 +151,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
+            Log.d(TAG, "dalem onAvtivityResult")
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
             handleSignInResult(result)
         }
@@ -166,16 +168,23 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            var user = mAuth!!.getCurrentUser();
+                            Log.d(TAG, "signInWithCredential:success")
+                            var user = mAuth!!.getCurrentUser()
+                            if(user!!.isEmailVerified==false) {
+                                user.sendEmailVerification()
+                            }
+                            val intente = Intent(this@Login, MenuHome::class.java)
+                            startActivity(intente)
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Log.w(TAG, "signInWithCredential:failure", task.getException())
                             //updateUI(null);
                         }
+
                     }
-                });
+                })
+
     }
     // [END auth_with_google]
 
@@ -188,8 +197,6 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
             Log.d(TAG, "" + acct!!.account)
             Log.d(TAG, "" + acct!!.email)
             Log.d(TAG, "" + acct!!.id)
-            Log.d(TAG, "" + acct!!.idToken)
-            Log.d(TAG, "" + acct!!.serverAuthCode)
             val account = result.signInAccount
             if (account != null) {
                 firebaseAuthWithGoogle(account)
@@ -206,6 +213,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     // [START signIn]
     private fun signIn() {
+        Log.d(TAG, "dalem signIn")
         val signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
@@ -244,9 +252,10 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     //google sign in
     //==============================================================================================
 
-
+    /*Unused Fun
     //==============================================================================================
     //text view link start
+    /*
     private fun span() {
         val ss = SpannableString("Belum punya akun? Sign Up")
         val clickableSpan = object : ClickableSpan() {
@@ -266,11 +275,13 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         link!!.setText(ss)
         link!!.movementMethod = LinkMovementMethod.getInstance()
     }
+    */
     //text view link end
     //==============================================================================================
 
     //==============================================================================================
     //firebase createUser start
+    /*
     private fun createUser(uEmail: String, uPass: String) {
 
         mAuth?.createUserWithEmailAndPassword(uEmail, uPass)
@@ -292,6 +303,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
                     }
                 })
     }
+    */
     //firebase createUser end
     //==============================================================================================
 
@@ -313,6 +325,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     //==============================================================================================
     //kitti start
+    /*
     fun kitti(URL: String) {
         Fuel.get(URL).response { request, response, result ->
             println(request)
@@ -324,8 +337,10 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
             }
         }
     }
+    */
     //kitti end
     //==============================================================================================
+    */
 }
 
 
