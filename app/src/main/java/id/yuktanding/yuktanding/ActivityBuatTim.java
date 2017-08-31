@@ -1,6 +1,5 @@
 package id.yuktanding.yuktanding;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -9,22 +8,24 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ActivityBuatTim extends AppCompatActivity {
 
-    TextInputEditText gk, anchor, leftFlank, rightFlank, pivot;
+    TextInputEditText editGk, editAnchor, editLeftFlank, editRightFlank, editPivot, editNamaTim;
     TextView textViewAnggota;
     Spinner spinnerOlahraga, spinnerDaerah;
     Button buttonBuatTim;
+
+    DatabaseReference databaseTim;
 
 //    public String[] anggotaValue = {null, null, null, null, null};
 
@@ -36,11 +37,12 @@ public class ActivityBuatTim extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         textViewAnggota = (TextView) findViewById(R.id.txt_tambah_anggota_tim);
-        gk = (TextInputEditText) findViewById(R.id.edit_pos_gk);
-        anchor = (TextInputEditText) findViewById(R.id.edit_pos_anchor);
-        leftFlank = (TextInputEditText) findViewById(R.id.edit_pos_left_flank);
-        rightFlank = (TextInputEditText) findViewById(R.id.edit_pos_right_flank);
-        pivot = (TextInputEditText) findViewById(R.id.edit_pos_pivot);
+        editGk = (TextInputEditText) findViewById(R.id.edit_pos_gk);
+        editAnchor = (TextInputEditText) findViewById(R.id.edit_pos_anchor);
+        editLeftFlank = (TextInputEditText) findViewById(R.id.edit_pos_left_flank);
+        editRightFlank = (TextInputEditText) findViewById(R.id.edit_pos_right_flank);
+        editPivot = (TextInputEditText) findViewById(R.id.edit_pos_pivot);
+        editNamaTim = (TextInputEditText) findViewById(R.id.edit_nama_tim);
 
         buttonBuatTim = (Button) findViewById(R.id.button_buat_tim);
 
@@ -66,11 +68,11 @@ public class ActivityBuatTim extends AppCompatActivity {
                 switch (position){
                     case 1: {
                         textViewAnggota.setVisibility(View.VISIBLE);
-                        gk.setVisibility(View.VISIBLE);
-                        anchor.setVisibility(View.VISIBLE);
-                        leftFlank.setVisibility(View.VISIBLE);
-                        rightFlank.setVisibility(View.VISIBLE);
-                        pivot.setVisibility(View.VISIBLE);
+                        editGk.setVisibility(View.VISIBLE);
+                        editAnchor.setVisibility(View.VISIBLE);
+                        editLeftFlank.setVisibility(View.VISIBLE);
+                        editRightFlank.setVisibility(View.VISIBLE);
+                        editPivot.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -78,15 +80,15 @@ public class ActivityBuatTim extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 textViewAnggota.setVisibility(View.GONE);
-                gk.setVisibility(View.GONE);
-                anchor.setVisibility(View.GONE);
-                leftFlank.setVisibility(View.GONE);
-                rightFlank.setVisibility(View.GONE);
-                pivot.setVisibility(View.GONE);
+                editGk.setVisibility(View.GONE);
+                editAnchor.setVisibility(View.GONE);
+                editLeftFlank.setVisibility(View.GONE);
+                editRightFlank.setVisibility(View.GONE);
+                editPivot.setVisibility(View.GONE);
             }
         });
 
-        gk.addTextChangedListener(new TextWatcher() {
+        editGk.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -99,7 +101,7 @@ public class ActivityBuatTim extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean fieldsOK=validate(new EditText[]{gk,anchor,leftFlank,rightFlank,pivot});
+                boolean fieldsOK= cekEditText(new EditText[]{editGk, editAnchor, editLeftFlank, editRightFlank, editPivot});
                 Log.d("YukTanding", "Edit Text: " + fieldsOK);
 
                 if(fieldsOK == true) buttonBuatTim.setEnabled(true);
@@ -107,7 +109,7 @@ public class ActivityBuatTim extends AppCompatActivity {
             }
         });
 
-        anchor.addTextChangedListener(new TextWatcher() {
+        editAnchor.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -120,7 +122,7 @@ public class ActivityBuatTim extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean fieldsOK=validate(new EditText[]{gk,anchor,leftFlank,rightFlank,pivot});
+                boolean fieldsOK= cekEditText(new EditText[]{editGk, editAnchor, editLeftFlank, editRightFlank, editPivot});
                 Log.d("YukTanding", "Edit Text: " + fieldsOK);
 
                 if(fieldsOK == true) buttonBuatTim.setEnabled(true);
@@ -128,7 +130,7 @@ public class ActivityBuatTim extends AppCompatActivity {
             }
         });
 
-        leftFlank.addTextChangedListener(new TextWatcher() {
+        editLeftFlank.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -141,7 +143,7 @@ public class ActivityBuatTim extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean fieldsOK=validate(new EditText[]{gk,anchor,leftFlank,rightFlank,pivot});
+                boolean fieldsOK= cekEditText(new EditText[]{editGk, editAnchor, editLeftFlank, editRightFlank, editPivot});
                 Log.d("YukTanding", "Edit Text: " + fieldsOK);
 
                 if(fieldsOK == true) buttonBuatTim.setEnabled(true);
@@ -149,7 +151,7 @@ public class ActivityBuatTim extends AppCompatActivity {
             }
         });
 
-        rightFlank.addTextChangedListener(new TextWatcher() {
+        editRightFlank.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -162,7 +164,7 @@ public class ActivityBuatTim extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean fieldsOK=validate(new EditText[]{gk,anchor,leftFlank,rightFlank,pivot});
+                boolean fieldsOK= cekEditText(new EditText[]{editGk, editAnchor, editLeftFlank, editRightFlank, editPivot});
                 Log.d("YukTanding", "Edit Text: " + fieldsOK);
 
                 if(fieldsOK == true) buttonBuatTim.setEnabled(true);
@@ -170,7 +172,7 @@ public class ActivityBuatTim extends AppCompatActivity {
             }
         });
 
-        pivot.addTextChangedListener(new TextWatcher() {
+        editPivot.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -183,7 +185,7 @@ public class ActivityBuatTim extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean fieldsOK=validate(new EditText[]{gk,anchor,leftFlank,rightFlank,pivot});
+                boolean fieldsOK= cekEditText(new EditText[]{editGk, editAnchor, editLeftFlank, editRightFlank, editPivot});
                 Log.d("YukTanding", "Edit Text: " + fieldsOK);
 
                 if(fieldsOK == true) buttonBuatTim.setEnabled(true);
@@ -194,16 +196,40 @@ public class ActivityBuatTim extends AppCompatActivity {
         buttonBuatTim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("message");
 
-                myRef.setValue("Hello, World!");
+                String namaTim = editNamaTim.getText().toString();
+                String olahraga = spinnerOlahraga.getSelectedItem().toString();
+                String daerah = spinnerDaerah.getSelectedItem().toString();
+
+                Log.d("YukTanding", "Bottom Tambah Tim Pressed: " + olahraga);
+
+                databaseTim = FirebaseDatabase.getInstance().getReference("DaftarTim" + olahraga);
+                String idTim = databaseTim.push().getKey();
+//                String idTim = user.uuid;
+
+                if(olahraga.equals("Futsal")){
+                    String gk = editGk.getText().toString();
+                    String anchor = editAnchor.getText().toString();
+                    String leftFlank = editLeftFlank.getText().toString();
+                    String rightFlank = editRightFlank.getText().toString();
+                    String pivot = editPivot.getText().toString();
+
+                    ItemTambahTimAdapter itemTambahTimAdapter =
+                            new ItemTambahTimAdapter(idTim, namaTim, gk, anchor, leftFlank, rightFlank, pivot, daerah, olahraga);
+                    databaseTim.child(idTim).setValue(itemTambahTimAdapter);
+
+                    Log.d("YukTanding", "Tambah Tim Futsal Berhasil");
+                    finish();
+                }
+                else if(olahraga == "Badminton") {
+
+                }
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private boolean validate(EditText[] fields){
+    private boolean cekEditText(EditText[] fields){
         for(int i=0; i<fields.length; i++){
             EditText currentField=fields[i];
             if(currentField.getText().toString().length()<=0){
