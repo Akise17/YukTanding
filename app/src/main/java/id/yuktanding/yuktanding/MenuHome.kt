@@ -24,16 +24,16 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
-    val TAG = "Disini home "
+    private val TAG = "Disini home "
     private var mAuth: FirebaseAuth? = null
     private var mGoogleApiClient: GoogleApiClient? = null
-    val RC_SIGN_IN = 100
+    private val RC_SIGN_IN = 100
     private var n_draw: TextView? = null
     private var e_draw: TextView? = null
     private var i_draw: ImageView? = null
-    var evar = ""
-    var nvar = ""
-    var ivar = ""
+    private var evar = ""
+    private var nvar = ""
+    private var ivar = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,9 +52,9 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         val currentUser = mAuth?.getCurrentUser()
         Log.d(TAG, "Firebase " + currentUser)
         Log.d(TAG, "Firebase " + currentUser!!.email)
-        Log.d(TAG, "Firebase " + currentUser!!.displayName)
-        Log.d(TAG, "Firebase " + currentUser!!.photoUrl)
-        Log.d(TAG, "Firebase " + currentUser!!.phoneNumber)
+        Log.d(TAG, "Firebase " + currentUser.displayName)
+        Log.d(TAG, "Firebase " + currentUser.photoUrl)
+        Log.d(TAG, "Firebase " + currentUser.phoneNumber)
         evar = currentUser.email!!
         nvar = currentUser.displayName!!
         ivar = currentUser.photoUrl.toString()
@@ -94,9 +94,9 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 val acct = result.signInAccount
                 Log.d(TAG, "" + acct)
                 Log.d(TAG, "" + acct!!.displayName)
-                Log.d(TAG, "" + acct!!.account)
-                Log.d(TAG, "" + acct!!.email)
-                Log.d(TAG, "" + acct!!.id)
+                Log.d(TAG, "" + acct.account)
+                Log.d(TAG, "" + acct.email)
+                Log.d(TAG, "" + acct.id)
                 Log.d(TAG,"mgoogleapi $mGoogleApiClient")
                 //Auth.GoogleSignInApi.silentSignIn(result)
             }
@@ -193,7 +193,6 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun signOut() {
@@ -207,17 +206,6 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
             val intente = Intent(this@MenuHome, Login::class.java)
             intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intente)
-
-//            object : ResultCallback<Status> {
-//                override fun onResult(status: Status) {
-//                    Log.d(TAG, "dalem onresult $status " )
-//                    // [START_EXCLUDE]
-//                    if (status.isSuccess) {
-//
-//                    }
-//                    // [END_EXCLUDE]
-//                }
-//            }
         }
     }
 }
