@@ -1,5 +1,6 @@
 package id.yuktanding.yuktanding
 
+import android.app.Application
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
@@ -40,7 +41,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 
-class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
+public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener{
     private var link: TextView? = null
     private var ib: ImageView? =null
     private var uie: TextInputEditText? = null
@@ -51,6 +52,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     var mAuth: FirebaseAuth? = null
     var mGoogleApiClient: GoogleApiClient? = null
     val RC_SIGN_IN = 100
+    var ac: GoogleSignInAccount?=null
     //private val mAuthListener: FirebaseAuth.AuthStateListener? = null
     val TAG = "Disini"
     //phoneAuth
@@ -95,6 +97,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         btnSignin!!.setOnClickListener {
             Log.d(TAG," tombol masuk diklik")
             signOut()
+
         }
     }
     //oncreate end
@@ -142,7 +145,7 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = mAuth?.getCurrentUser()
         Log.d(TAG, "onStart " + currentUser)
-        Log.d(TAG, "onStart " + currentUser)
+
     }
 
 
@@ -153,13 +156,14 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         if (requestCode == RC_SIGN_IN) {
             Log.d(TAG, "dalem onAvtivityResult")
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
+            Log.d(TAG, "Result $result")
             handleSignInResult(result)
         }
     }
 
     // [START auth_with_google]
     private fun firebaseAuthWithGoogle(acct : GoogleSignInAccount) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId())
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.idToken)
 
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         mAuth!!.signInWithCredential(credential)
@@ -169,11 +173,12 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success")
-                            var user = mAuth!!.getCurrentUser()
+                            val user = mAuth!!.getCurrentUser()
                             if(user!!.isEmailVerified==false) {
                                 user.sendEmailVerification()
                             }
                             val intente = Intent(this@Login, MenuHome::class.java)
+                            intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             startActivity(intente)
                             //updateUI(user);
                         } else {
@@ -193,10 +198,12 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
         if (result.isSuccess) {
             // Signed in successfully, show authenticated UI.
             val acct = result.signInAccount
+            Log.d(TAG,"" +acct)
             Log.d(TAG, "" + acct!!.displayName)
             Log.d(TAG, "" + acct!!.account)
             Log.d(TAG, "" + acct!!.email)
             Log.d(TAG, "" + acct!!.id)
+            Log.d(TAG,"mgoogleapi $mGoogleApiClient")
             val account = result.signInAccount
             if (account != null) {
                 firebaseAuthWithGoogle(account)
@@ -219,18 +226,15 @@ class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     }
     // [END signIn]
 
-    // [START signOut]
     private fun signOut() {
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                object : ResultCallback<Status> {
-                    override fun onResult(status: Status) {
-                        // [START_EXCLUDE]
-                        //updateUI(false)
-                        // [END_EXCLUDE]
-                    }
-                })
+        // Firebase sign out
+        mAuth!!.signOut()
+
+        // Google sign out
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback {
+
+        }
     }
-    // [END signOut]
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not

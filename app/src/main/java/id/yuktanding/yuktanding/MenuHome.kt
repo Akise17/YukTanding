@@ -1,5 +1,6 @@
 package id.yuktanding.yuktanding
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -11,28 +12,28 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
-import android.text.SpannableString
-import android.text.style.ClickableSpan
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import com.github.kittinunf.fuel.Fuel
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.GoogleApiClient
 import com.squareup.picasso.Picasso
 import com.google.firebase.auth.FirebaseAuth
 
-class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
     val TAG = "Disini home "
     private var mAuth: FirebaseAuth? = null
-    private var n_draw: TextView? =null
+    private var mGoogleApiClient: GoogleApiClient? = null
+    val RC_SIGN_IN = 100
+    private var n_draw: TextView? = null
     private var e_draw: TextView? = null
-    private var i_draw: ImageView?= null
-    var evar=""
-    var nvar=""
-    var ivar=""
-
+    private var i_draw: ImageView? = null
+    var evar = ""
+    var nvar = ""
+    var ivar = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,16 +46,20 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         Log.d(TAG, "mAuth")
 
         mAuth = FirebaseAuth.getInstance()
+        val acg = intent.getStringExtra("KEY")
+        Log.d(TAG, "intent " + acg)
+
         val currentUser = mAuth?.getCurrentUser()
         Log.d(TAG, "Firebase " + currentUser)
         Log.d(TAG, "Firebase " + currentUser!!.email)
-        evar= currentUser.email!!
         Log.d(TAG, "Firebase " + currentUser!!.displayName)
-        nvar= currentUser.displayName!!
         Log.d(TAG, "Firebase " + currentUser!!.photoUrl)
-        ivar= currentUser.photoUrl.toString()
-        Log.d(TAG, "Firebase " + currentUser!!.isEmailVerified)
+        Log.d(TAG, "Firebase " + currentUser!!.phoneNumber)
+        evar = currentUser.email!!
+        nvar = currentUser.displayName!!
+        ivar = currentUser.photoUrl.toString()
 
+        initGso()
         //==========================================================================================
         //Floating Action Button
         val fab = findViewById(R.id.fab) as FloatingActionButton
@@ -67,7 +72,6 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
 
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
 
-
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.setDrawerListener(toggle)
@@ -75,8 +79,31 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
 
         val navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
+    }
 
-//        e_draw!!.setText(currentUser.email)
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Log.d(TAG, "dalem onAvtivityResult")
+            val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
+            Log.d(TAG, "Result $result")
+            if (result.isSuccess) {
+                // Signed in successfully, show authenticated UI.
+                val acct = result.signInAccount
+                Log.d(TAG, "" + acct)
+                Log.d(TAG, "" + acct!!.displayName)
+                Log.d(TAG, "" + acct!!.account)
+                Log.d(TAG, "" + acct!!.email)
+                Log.d(TAG, "" + acct!!.id)
+                Log.d(TAG,"mgoogleapi $mGoogleApiClient")
+                //Auth.GoogleSignInApi.silentSignIn(result)
+            }
+            else{
+                Log.d(TAG, "Failed")
+            }
+        }
     }
 
     override fun onBackPressed() {
@@ -91,9 +118,9 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_home, menu)
-        e_draw= findViewById(R.id.email_draw) as TextView
-        n_draw= findViewById(R.id.nama_draw) as TextView
-        i_draw= findViewById(R.id.imageView_draw) as ImageView
+        e_draw = findViewById(R.id.email_draw) as TextView
+        n_draw = findViewById(R.id.nama_draw) as TextView
+        i_draw = findViewById(R.id.imageView_draw) as ImageView
         e_draw!!.setText(evar)
         n_draw!!.setText(nvar)
         Picasso.with(this)
@@ -121,16 +148,76 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         // Handle navigation view item clicks here.
         val id = item.itemId
 
-        when(id){
-            R.id.nav_camera -> Log.d(TAG,"nav kamera")
-            R.id.nav_slideshow -> Log.d(TAG,"nav slide")
-            R.id.nav_manage -> Log.d(TAG,"nav slide")
-            R.id.nav_share -> Log.d(TAG,"nav slide")
-            R.id.nav_send -> Log.d(TAG,"nav slide")
+        when (id) {
+            R.id.nav_squad -> Log.d(TAG, "nav kamera")
+            R.id.nav_history -> Log.d(TAG, "nav slide")
+            R.id.nav_help -> Log.d(TAG, "nav manage")
+            R.id.nav_setting -> Log.d(TAG, "nav priv")
+            R.id.nav_signout -> signOut()
         }
 
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun initGso() {
+        Log.d(TAG, "sebelum gso")
+        // [START configure_signin]
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .requestProfile()
+                .requestId()
+                .build()
+        // [END configure_signin]
+
+        Log.d(TAG, "sebelum mGoogle")
+        // [START build_client]
+        // Build a GoogleApiClient with access to the Google Sign-In API and the
+        // options specified by gso.
+        mGoogleApiClient = GoogleApiClient.Builder(this)
+                //.enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)!!
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build()
+
+        mGoogleApiClient!!.connect()
+
+        val signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+
+        Log.d(TAG, "setelah mGoogle $mGoogleApiClient")
+        // [END build_client]
+    }
+
+    override fun onConnectionFailed(p0: ConnectionResult) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun signOut() {
+        // Firebase sign out
+        mAuth!!.signOut()
+        val currentUser = mAuth?.getCurrentUser()
+        Log.d(TAG, "Firebase " + currentUser)
+        // Google sign out
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback {
+            Log.d(TAG, "dalem callback " )
+            val intente = Intent(this@MenuHome, Login::class.java)
+            intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intente)
+
+//            object : ResultCallback<Status> {
+//                override fun onResult(status: Status) {
+//                    Log.d(TAG, "dalem onresult $status " )
+//                    // [START_EXCLUDE]
+//                    if (status.isSuccess) {
+//
+//                    }
+//                    // [END_EXCLUDE]
+//                }
+//            }
+        }
     }
 }
