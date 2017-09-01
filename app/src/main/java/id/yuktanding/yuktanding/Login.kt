@@ -23,6 +23,7 @@ import android.support.constraint.ConstraintLayout
 import android.support.design.widget.Snackbar
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.GoogleApiClient
@@ -49,12 +50,11 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
     private var conlay: ConstraintLayout?= null
     private var btnSignin: Button? = null
     private var btnSignGoogle: SignInButton? = null
-    var mAuth: FirebaseAuth? = null
-    var mGoogleApiClient: GoogleApiClient? = null
-    val RC_SIGN_IN = 100
-    var ac: GoogleSignInAccount?=null
-    //private val mAuthListener: FirebaseAuth.AuthStateListener? = null
-    val TAG = "Disini"
+    private var mAuth: FirebaseAuth? = null
+    private var mGoogleApiClient: GoogleApiClient? = null
+    private val RC_SIGN_IN = 100
+    private val TAG = "Disini"
+    private var backButtonCount = 0
     //phoneAuth
     private val KEY_VERIFY_IN_PROGRESS = "key_verify_in_progress"
     private val STATE_INITIALIZED = 1
@@ -132,7 +132,23 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         // Set the dimensions of the sign-in button.
         gantiTextSignIn(btnSignGoogle!!, "Google")
         // [END customize_button]
+    }
 
+    override fun onBackPressed() {
+        if(backButtonCount >= 1)
+        {
+            var intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            Log.d(TAG, "$backButtonCount")
+        }
+        else
+        {
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
+            backButtonCount++
+            Log.d(TAG, "$backButtonCount")
+        }
     }
 
     public override fun onStart() {
@@ -148,6 +164,10 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        backButtonCount=0
+    }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -197,6 +217,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         Log.d(TAG, "handleSignInResult:" + result.isSuccess)
         if (result.isSuccess) {
             // Signed in successfully, show authenticated UI.
+            Toast.makeText(this, "Sign Up Success", Toast.LENGTH_SHORT).show()
             val acct = result.signInAccount
             Log.d(TAG,"" +acct)
             Log.d(TAG, "" + acct!!.displayName)
@@ -208,10 +229,6 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
             if (account != null) {
                 firebaseAuthWithGoogle(account)
             }
-            //createUser(acct.email!!,acct.id!!)
-
-            //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct!!.displayName))
-            //updateUI(true)
         } else {
             // Signed out, show unauthenticated UI.
             //updateUI(false)

@@ -15,6 +15,7 @@ import android.view.MenuItem
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
@@ -34,6 +35,7 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
     private var evar = ""
     private var nvar = ""
     private var ivar = ""
+    private var backButtonCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +83,11 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         navigationView.setNavigationItemSelectedListener(this)
     }
 
+    override fun onPause() {
+        super.onPause()
+        backButtonCount=0
+    }
+
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -111,7 +118,21 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+                if(backButtonCount >= 1)
+                {
+                    var intent = Intent(Intent.ACTION_MAIN)
+                    intent.addCategory(Intent.CATEGORY_HOME)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    Log.d(TAG, "$backButtonCount")
+                }
+                else
+                {
+                    Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
+                    backButtonCount++
+                    Log.d(TAG, "$backButtonCount")
+                }
+
         }
     }
 
