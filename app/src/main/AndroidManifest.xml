@@ -3,7 +3,6 @@
     package="id.yuktanding.yuktanding">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -11,9 +10,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/yuklogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/yuklogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:windowSoftInputMode="stateHidden">
@@ -38,12 +37,59 @@
         </activity>
         <activity
             android:name=".Launcher">
+          
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+      
+        <activity
+            android:name=".ActivitySplashScreen"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+      
+        <activity
+            android:name=".ActivityMain"
+            android:label="YukTanding"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+      
+        <activity
+            android:name=".ActivityPesanLapangan"
+            android:label="@string/title_activity_pesan_lapngan"
+            android:noHistory="true"
+            android:parentActivityName=".ActivityMain"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="id.yuktanding.yuktanding.ActivityMain" />
+        </activity>
+      
+        <activity
+            android:name=".ActivityCariLawan"
+            android:label="@string/title_activity_cari_lawan"
+            android:noHistory="true"
+            android:parentActivityName=".ActivityMain">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="id.yuktanding.yuktanding.ActivityMain" />
+        </activity>
+      
+        <activity
+            android:name=".ActivityBuatTim"
+            android:label="@string/title_activity_buat_tim"
+            android:noHistory="true"
+            android:parentActivityName=".ActivityMain"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="id.yuktanding.yuktanding.ActivityMain" />
         </activity>
     </application>
 

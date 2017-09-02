@@ -5,7 +5,6 @@
     <color name="colorAccent">#f44336</color>
     <color name="yukTandingOren">#d14b02</color>
     <color name="yukTandingGreen">#77dd77</color>
-
     <color name="oren">#ffa726</color>
     <color name="background_prime">#000000</color>
     <color name="color_text_black">#000000</color>
@@ -19,4 +18,8 @@
     <color name="color_con_activated">#efebe9</color>
     <color name="color_con_highlight">#ffcc80</color>
     <color name="link">#3949ab</color>
+    <color name="recylerBackgroun">#b8c9b3</color>
+    <color name="tabTxtColor">#787878</color>
+    <color name="tabTxtColorSelect">#000000</color>
+    <color name="tabBackgound">#FFFFFF</color>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_pesanLapangan"
+        android:icon="@drawable/ic_book_black_24dp"
+        android:orderInCategory="1"
+        android:title="Pesan Lapangan" />
+
+    <item
+        android:id="@+id/navigation_menu"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:orderInCategory="2"
+        android:title="Main Menu" />
+
+    <item
+        android:id="@+id/navigation_cariLawan"
+        android:icon="@drawable/ic_people_outline_black_24dp"
+        android:orderInCategory="3"
+        android:title="Cari Lawan" />
+
+</menu>
