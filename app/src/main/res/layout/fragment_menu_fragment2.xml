@@ -17,27 +17,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:orientation="horizontal">
 
-                <ImageView
+                <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/img_profil"
-                    android:layout_width="@dimen/profil_photo_width"
-                    android:layout_height="@dimen/profil_photo_height"
-                    android:src="@mipmap/yuklogo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:scaleType="centerInside"
+                    android:scaleType="centerCrop"
+                    android:src="@color/yukTandingOren"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:background="@drawable/image_border"/>
+                    app:civ_border_color="#ffffff"
+                    app:civ_border_width="2dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="2"
+                    app:civ_shadow_color="#c8000000"/>
 
                 <TextView
-                    android:id="@+id/section_label"
+                    android:id="@+id/nama_profil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
