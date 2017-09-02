@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">YukTanding</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Pengaturan</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -13,4 +13,20 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_pesan_lapngan">PesanLapangan</string>
     <string name="title_activity_cari_lawan">CariLawan</string>
+    <string name="title_activity_buat_tim">ActivityBuatTim</string>
+
+    <array name="daerah_tim">
+        <item>Pilih Daerah</item>
+        <item>Banten</item>
+        <item>Jakarta</item>
+        <item>Jawa Barat</item>
+    </array>
+
+    <array name="olahraga">
+        <item>Pilih Olahraga</item>
+        <item>Futsal</item>
+        <item>Badminton</item>
+        <item>Basket</item>
+    </array>
+
 </resources>

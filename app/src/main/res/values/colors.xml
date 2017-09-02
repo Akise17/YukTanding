@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#77DD77</color>
+    <color name="colorPrimaryDark">#1c361c</color>
     <color name="colorAccent">#312c2c</color>
     <color name="yukTandingGreen">#77DD77</color>
     <color name="recylerBackgroun">#b8c9b3</color>

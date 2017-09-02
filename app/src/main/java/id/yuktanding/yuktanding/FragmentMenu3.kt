@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import java.util.ArrayList
 
-class MenuFragment3 : Fragment() {
+class FragmentMenu3 : Fragment() {
 
     internal lateinit var timArrayList: ArrayList<ItemTim>
     internal lateinit var timRecyclerView: RecyclerView

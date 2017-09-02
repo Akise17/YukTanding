@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="id.yuktanding.yuktanding.Main2Activity$PlaceholderFragment">
+    tools:context="id.yuktanding.yuktanding.ActivityMain$PlaceholderFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,11 +27,14 @@
 
                 <ImageView
                     android:id="@+id/img_profil"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/profil_photo_width"
+                    android:layout_height="@dimen/profil_photo_height"
                     android:src="@mipmap/yuklogo"
                     android:layout_gravity="center"
-                    android:layout_weight="1"/>
+                    android:scaleType="centerInside"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:background="@drawable/image_border"/>
 
                 <TextView
                     android:id="@+id/section_label"

@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "54101588677",
-    "firebase_url": "https://yuktanding-6fffc.firebaseio.com",
-    "project_id": "yuktanding-6fffc",
-    "storage_bucket": "yuktanding-6fffc.appspot.com"
+    "project_number": "622576196134",
+    "firebase_url": "https://yuktanding-df7c9.firebaseio.com",
+    "project_id": "yuktanding-df7c9",
+    "storage_bucket": "yuktanding-df7c9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:54101588677:android:0b615fc41eda3fec",
+        "mobilesdk_app_id": "1:622576196134:android:0b615fc41eda3fec",
         "android_client_info": {
           "package_name": "id.yuktanding.yuktanding"
         }
       },
       "oauth_client": [
         {
-          "client_id": "54101588677-rii3b7i9v2c7q6i9fjs4tddr2u73h0p9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "id.yuktanding.yuktanding",
-            "certificate_hash": "0b086ae73c8b11db7f562738521e8b8690e7ff20"
-          }
-        },
-        {
-          "client_id": "54101588677-c3jngl91nbiotctpausbupaen0sm9juf.apps.googleusercontent.com",
+          "client_id": "622576196134-krba9q2kh1uophbg9oel8mf1g3gb5dga.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB0fC0lwUOdaIeJN0uw5JlmcdP1gQcxjNE"
+          "current_key": "AIzaSyD8rJHTLF5cuvRkzLxKrzvnNfDjs42k3xg"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "54101588677-c3jngl91nbiotctpausbupaen0sm9juf.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
