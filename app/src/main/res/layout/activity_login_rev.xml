@@ -43,7 +43,7 @@
         android:id="@+id/btn_Login"
         style="@style/tombol"
         android:backgroundTint="@color/oren"
-        android:drawableStart="@drawable/ic_phone_android_black_24dp"
+        android:drawableStart="@drawable/ic_phone_android"
         android:drawablePadding="16dp"
         android:text="@string/login"
         android:textAlignment="center"
