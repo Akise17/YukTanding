@@ -38,8 +38,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 
 
 public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener{
@@ -96,7 +96,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         }
         btnSignin!!.setOnClickListener {
             Log.d(TAG," tombol masuk diklik")
-            signOut()
+            signOut() //haha
 
         }
     }
@@ -197,7 +197,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
                             if(user!!.isEmailVerified==false) {
                                 user.sendEmailVerification()
                             }
-                            val intente = Intent(this@Login, MenuHome::class.java)
+                            val intente = Intent(this@Login, ActivityMain::class.java)
                             intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             startActivity(intente)
                             //updateUI(user);

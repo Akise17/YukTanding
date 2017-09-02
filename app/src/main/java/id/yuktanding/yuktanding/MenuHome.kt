@@ -48,8 +48,6 @@ class MenuHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         Log.d(TAG, "mAuth")
 
         mAuth = FirebaseAuth.getInstance()
-        val acg = intent.getStringExtra("KEY")
-        Log.d(TAG, "intent " + acg)
 
         val currentUser = mAuth?.getCurrentUser()
         Log.d(TAG, "Firebase " + currentUser)
