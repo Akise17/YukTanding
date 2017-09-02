@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#77DD77</color>
-    <color name="colorPrimaryDark">#1c361c</color>
-    <color name="colorAccent">#312c2c</color>
-    <color name="yukTandingGreen">#77DD77</color>
+    <color name="colorPrimary">#ff6f00</color>
+    <color name="colorPrimaryDark">#bf360c</color>
+    <color name="colorAccent">#f44336</color>
+    <color name="yukTandingOren">#d14b02</color>
+    <color name="yukTandingGreen">#77dd77</color>
+    <color name="oren">#ffa726</color>
+    <color name="background_prime">#000000</color>
+    <color name="color_text_black">#000000</color>
+    <color name="color_input_hint">#FFF</color>
+    <color name="color_text_highlight">#ffcc80</color>
+    <color name="color_text">#FFF</color>
+    <color name="color_text_background">#b4331c0b</color>
+    <color name="color_text_background_trans">#00ffffff</color>
+    <color name="google_red">#dd4b39</color>
+    <color name="color_con_normal">#bdbdbd</color>
+    <color name="color_con_activated">#efebe9</color>
+    <color name="color_con_highlight">#ffcc80</color>
+    <color name="link">#3949ab</color>
     <color name="recylerBackgroun">#b8c9b3</color>
     <color name="tabTxtColor">#787878</color>
     <color name="tabTxtColorSelect">#000000</color>

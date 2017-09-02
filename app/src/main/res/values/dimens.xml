@@ -1,7 +1,20 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+    <item name="match_parent" format="integer" type="dimen">-1</item>
+    <item name="wrap_content" format="integer" type="dimen">-2</item>
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_guide">32dp</dimen>
+    <dimen name="input_width">145dp</dimen>
+    <dimen name="input_width_full">240dp</dimen>
+    <dimen name="text_padding">16dp</dimen>
+    <dimen name="Button">240dp</dimen>
+    <dimen name="corner_rad">4dp</dimen>
+    <dimen name="margin_edittext">8dp</dimen>
+    <dimen name="margin_edittext_err">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="profil_photo_width">80dp</dimen>
