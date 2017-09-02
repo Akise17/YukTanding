@@ -221,7 +221,7 @@ public class ActivityBuatTim extends AppCompatActivity {
                     Log.d("YukTanding", "Tambah Tim Futsal Berhasil");
                     finish();
                 }
-                else if(olahraga == "Badminton") {
+                else if(olahraga.equals("Badminton")) {
 
                 }
             }
