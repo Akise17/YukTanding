@@ -96,7 +96,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         }
         btnSignin!!.setOnClickListener {
             Log.d(TAG," tombol masuk diklik")
-            signOut()
+            signOut() //haha
 
         }
     }
