@@ -46,6 +46,7 @@ class ActivitySplashScreen : AppCompatActivity() ,GoogleApiClient.OnConnectionFa
 
         private val splashInterval = 2000
     }
+
     public override fun onStart() {
         super.onStart()
         //var opr = Auth.GOOGLE_SIGN_IN_API.silentSignIn(mGoogleApiClient) as OptionalPendingResult<GoogleSignInResult>

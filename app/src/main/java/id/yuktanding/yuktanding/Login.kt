@@ -206,10 +206,8 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
                             Log.w(TAG, "signInWithCredential:failure", task.getException())
                             //updateUI(null);
                         }
-
                     }
                 })
-
     }
     // [END auth_with_google]
 
@@ -217,7 +215,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         Log.d(TAG, "handleSignInResult:" + result.isSuccess)
         if (result.isSuccess) {
             // Signed in successfully, show authenticated UI.
-            Toast.makeText(this, "Sign Up Success", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Sign In Berhasil", Toast.LENGTH_SHORT).show()
             val acct = result.signInAccount
             Log.d(TAG,"" +acct)
             Log.d(TAG, "" + acct!!.displayName)
@@ -231,6 +229,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
             }
         } else {
             // Signed out, show unauthenticated UI.
+            Toast.makeText(this, "Sign In Gagal", Toast.LENGTH_SHORT).show()
             //updateUI(false)
         }
     }

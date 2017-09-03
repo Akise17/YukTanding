@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
@@ -30,6 +31,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import com.mikhaellopez.circularimageview.CircularImageView
 import com.squareup.picasso.Picasso
+import java.util.*
 
 class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedListener{
 
@@ -41,6 +43,8 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
     private var mAuth: FirebaseAuth? = null
     private var mGoogleApiClient: GoogleApiClient? = null
     private val RC_SIGN_IN = 100
+    private var toast: Toast?= null
+    var back1kali = false
     //variable fire base [End]
 
     private var backButtonCount = 0 //buat toast press again to exit
@@ -82,21 +86,37 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
     }
 
     override fun onBackPressed() {
-            if(backButtonCount >= 1) // TODO saat toast ilang backButtonCountnya dijadiin 0 lagi
-            {
-                var intent = Intent(Intent.ACTION_MAIN)
-                intent.addCategory(Intent.CATEGORY_HOME)
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
-                Log.d(TAG, "$backButtonCount")
-            }
-            else
-            {
-                // TODO kelemahannya saat toast udah ilang, dipencet sekali langsung keluar (lemes deh)
-                Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
-                backButtonCount++
-                Log.d(TAG, "$backButtonCount")
-            }
+        var npos:Int
+        npos=mViewPager!!.currentItem
+        Log.d(TAG,"posisi tab "+npos)
+        when(npos){  //TODO saat posisi tab di profile atau TIM, back mengarah ke home
+            0->back2kali()
+        }
+    }
+    fun back2kali() {
+        toast = Toast.makeText(this,"Press again to exit", Toast.LENGTH_SHORT)
+        if(back1kali)
+        {
+            var intent = Intent(Intent.ACTION_MAIN)
+            toast!!.cancel()
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        back1kali=true
+        Log.d(TAG,"cek tombol $back1kali ")
+        toast!!.show()
+
+        Handler().postDelayed(
+                object : Runnable {
+                    override fun run() {
+                        back1kali=false
+                        Log.d(TAG,"cek tombol $back1kali ")
+                    }
+                },
+                2000
+        )
     }
 
     override fun onPause() {
@@ -189,6 +209,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
                 val args = Bundle()
                 args.putInt(ARG_SECTION_NUMBER, sectionNumber)
                 fragment.arguments = args
+                Log.d("disini newInstance ","$fragment")
                 return fragment
             }
         }
@@ -211,15 +232,13 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
             return PlaceholderFragment.newInstance(position + 1)
         }
 
-        override fun getCount(): Int {
-            // Show 3 total pages.
-            return 3
-        }
+        override fun getCount(): Int = // Show 3 total pages.
+                3
 
         override fun getPageTitle(position: Int): CharSequence? {
             when (position) {
-                0 -> return "Jadwal"
-                1 -> return "Profil"
+                0 -> return "Home"
+                1 -> return "Profile"
                 2 -> return "TIM"
             }
             return null
