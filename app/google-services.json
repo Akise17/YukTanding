@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "622576196134-2r3hjvadivnf3ji5l1vutcj0kt3kv631.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.yuktanding.yuktanding",
+            "certificate_hash": "0b086ae73c8b11db7f562738521e8b8690e7ff20"
+          }
+        },
+        {
           "client_id": "622576196134-nth9tn5ueu1s97qdho0ubv19tntlru5d.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
