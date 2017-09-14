@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class FragmentMenu3 : Fragment() {
 
     internal lateinit var timArrayList: ArrayList<ItemTim>
     internal lateinit var timRecyclerView: RecyclerView
+    private val TAG = "Disini fragment 3 "
 
     lateinit var databaseTim: FirebaseDatabase
     lateinit var myRef: DatabaseReference
@@ -59,6 +61,7 @@ class FragmentMenu3 : Fragment() {
             }
 
         })
+        Log.d(TAG, "onCreateView")
 
         timArrayList = ArrayList()
 

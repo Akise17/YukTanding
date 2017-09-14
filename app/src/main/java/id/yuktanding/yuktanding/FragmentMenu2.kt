@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso
 
 class FragmentMenu2 : Fragment() {
 
-    private val TAG = "Disini fragment2  "
+    private val TAG = "Disini fragment 2 "
     private var mAuth: FirebaseAuth? = null
     private var mGoogleApiClient: GoogleApiClient? = null
     internal lateinit var foto: ImageView
@@ -33,6 +33,8 @@ class FragmentMenu2 : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         val view= inflater!!.inflate(R.layout.fragment_menu_fragment2, container, false)
+
+        Log.d(TAG, "onCreateView")
         // Inflate the layout for this fragment
         mAuth = FirebaseAuth.getInstance() //Buat tau data user yang udah login
         getUserInf() //buat ngambil data email,nama,url foto

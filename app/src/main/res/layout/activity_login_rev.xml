@@ -7,7 +7,7 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:id="@+id/constraint_log"
-    android:background="@color/yukTandingOren"
+    android:background="@drawable/splash_gradient"
     tools:context="id.yuktanding.yuktanding.SignUp">
 
     <ImageView
