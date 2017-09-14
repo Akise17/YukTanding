@@ -93,6 +93,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
             0->back2kali()
         }
     }
+
     fun back2kali() {
         toast = Toast.makeText(this,"Press again to exit", Toast.LENGTH_SHORT)
         if(back1kali)

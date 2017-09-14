@@ -46,6 +46,7 @@ class FragmentMenu1 : Fragment() {
         jadwalRecyclerView = view.findViewById(R.id.recycle_view) as RecyclerView
         val linearLayoutManager = LinearLayoutManager(context)
         jadwalRecyclerView.layoutManager = linearLayoutManager
+        jadwalRecyclerView.isFocusable=false
 
         val itemAdapter = ItemJadwalAdapter(jadwalArrayList, context)
         jadwalRecyclerView.adapter = itemAdapter

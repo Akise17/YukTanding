@@ -1,25 +1,73 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="id.yuktanding.yuktanding.FragmentMenu1">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:layout_marginTop="8dp">
+                <ImageView
+                    android:id="@+id/img_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/yuklogo"/>
+                <Button
+                    android:id="@+id/btn_futsal"
+                    android:layout_width="@dimen/button_width_frag1"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/icon_bola"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btn_bultang"
+                    app:layout_constraintTop_toBottomOf="@+id/img_event"
+                    android:layout_marginTop="4dp"
+                    android:drawablePadding="4dp"
+                    android:text="Futsal"/>
+                <Button
+                    android:id="@+id/btn_bultang"
+                    android:layout_width="@dimen/button_width_frag1"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/icon_bola"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_futsal"
+                    app:layout_constraintRight_toLeftOf="@+id/btn_asg"
+                    app:layout_constraintTop_toBottomOf="@+id/img_event"
+                    android:layout_marginTop="4dp"
+                    android:drawablePadding="4dp"
+                    android:text="Bulu Tangkis"/>
+                <Button
+                    android:id="@+id/btn_asg"
+                    android:layout_width="@dimen/button_width_frag1"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/icon_bola"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_bultang"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_event"
+                    android:layout_marginTop="4dp"
+                    android:drawablePadding="4dp"
+                    android:text="Airsoft Gun"/>
 
-        </android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycle_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_bultang"
+                    android:focusable="false"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#b7b7b7">
+                </android.support.v7.widget.RecyclerView>
 
-
-    </RelativeLayout>
-
-
+            </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>
