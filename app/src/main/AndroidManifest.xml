@@ -73,18 +73,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="id.yuktanding.yuktanding.ActivityMain" />
         </activity>
-      
-        <activity
-            android:name=".ActivityBuatTim"
-            android:label="@string/title_activity_buat_tim"
-            android:noHistory="true"
-            android:parentActivityName=".ActivityMain"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="id.yuktanding.yuktanding.ActivityMain" />
-        </activity>
+
     </application>
 
 </manifest>
