@@ -72,14 +72,9 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         mViewPager!!.adapter = mSectionsPagerAdapter
         Log.d(TAG,"setelah viewPager")
 
-        val tabLayout = findViewById(R.id.tabs) as TabLayout
+        val tabLayout = findViewById(R.id.tabs) as TabLayout //TODO ganti warna background tab title
         tabLayout.setupWithViewPager(mViewPager)
         Log.d(TAG,"setelah tab layout")
-
-//        var npos=mViewPager!!.currentItem
-//        Log.d(TAG,"posisi tab "+npos)
-
-        mViewPager!!.callOnClick()
 
         val navigation = findViewById(R.id.navigation) as BottomNavigationView
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -95,14 +90,10 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         var npos:Int
         npos=mViewPager!!.currentItem
         Log.d(TAG,"posisi tab "+npos)
-        when(npos){  //TODO saat posisi tab di profile atau TIM, back mengarah ke home
+        when(npos){
             0->back2kali()
-            1->{
-                mViewPager!!.currentItem=0 //tai ternyata gini doang, diinternet tutorialnya pake callback,viewmodel segala macem
-            }
-            2->{
-                mViewPager!!.currentItem=0
-            }
+            1->mViewPager!!.currentItem=0 //tai ternyata gini doang, diinternet tutorialnya pake callback,viewmodel segala macem
+            2->mViewPager!!.currentItem=0
         }
     }
 
