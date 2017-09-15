@@ -34,11 +34,16 @@ class FragmentMenu3 : Fragment() {
 
         val view = inflater!!.inflate(R.layout.fragment_menu_fragment3, container, false)
 
+        Log.d(TAG,"sebelum user")
         user = FirebaseAuth.getInstance().currentUser!!
-        if (user != null) userUID = user.uid
+        //if (user != null) userUID = user.uid
+        userUID = user.uid
 
+        Log.d(TAG,"sebelum myRef " + userUID)
+        /*
         myRef = databaseTim.getReference().child(userUID)
 
+        Log.d(TAG,"sebelum addchild")
         myRef.addChildEventListener(object : ChildEventListener{
             override fun onCancelled(p0: DatabaseError?) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -61,6 +66,8 @@ class FragmentMenu3 : Fragment() {
             }
 
         })
+        */
+
         Log.d(TAG, "onCreateView")
 
         timArrayList = ArrayList()

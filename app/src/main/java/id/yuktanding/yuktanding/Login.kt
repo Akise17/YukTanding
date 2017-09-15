@@ -87,18 +87,18 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         val intente = Intent(this, MenuHome::class.java)
 
         Log.d(TAG, "setelah deklarasi intent")
-        mAuth = FirebaseAuth.getInstance()
-        initGso()
+        mAuth = FirebaseAuth.getInstance() //untuk cek akun firebase dalam instance
+        initGso() //inisasi Gso
 
         btnSignGoogle!!.setOnClickListener {
             Log.d(TAG," Google sign in diklik")
             signIn()
-        }
+        }  //Program tombol google
         btnSignin!!.setOnClickListener {
             Log.d(TAG," tombol masuk diklik")
             signOut() //haha
 
-        }
+        } //Program tombol signin
     }
     //oncreate end
     //==============================================================================================

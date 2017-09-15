@@ -76,6 +76,11 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         tabLayout.setupWithViewPager(mViewPager)
         Log.d(TAG,"setelah tab layout")
 
+//        var npos=mViewPager!!.currentItem
+//        Log.d(TAG,"posisi tab "+npos)
+
+        mViewPager!!.callOnClick()
+
         val navigation = findViewById(R.id.navigation) as BottomNavigationView
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.menu.getItem(1).isChecked = true //posisi nav bar aktif
@@ -92,6 +97,12 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         Log.d(TAG,"posisi tab "+npos)
         when(npos){  //TODO saat posisi tab di profile atau TIM, back mengarah ke home
             0->back2kali()
+            1->{
+                mViewPager!!.currentItem=0 //tai ternyata gini doang, diinternet tutorialnya pake callback,viewmodel segala macem
+            }
+            2->{
+                mViewPager!!.currentItem=0
+            }
         }
     }
 
@@ -211,7 +222,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
                 val args = Bundle()
                 args.putInt(ARG_SECTION_NUMBER, sectionNumber)
                 fragment.arguments = args
-                Log.d("disini newInstance ","$fragment")
+                Log.d("disini" ,"newInstance Fragment $fragment")
                 return fragment
             }
         }
@@ -231,6 +242,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
                 1 -> return FragmentMenu2()
                 2 -> return FragmentMenu3()
             }
+            Log.d(TAG,"SectionPager $position")
             return PlaceholderFragment.newInstance(position + 1)
         }
 
@@ -245,6 +257,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
             }
             return null
         }
+
     }
 
     private fun initGso() {
