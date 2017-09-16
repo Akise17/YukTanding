@@ -66,7 +66,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
         Log.d(TAG,"setelah toolbar dan pagerAdapter")
-
+5
         // Set up the ViewPager with the sections adapter.
         mViewPager = findViewById(R.id.container) as ViewPager
         mViewPager!!.adapter = mSectionsPagerAdapter
@@ -248,7 +248,6 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
             }
             return null
         }
-
     }
 
     private fun initGso() {

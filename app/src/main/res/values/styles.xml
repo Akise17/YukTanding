@@ -59,6 +59,14 @@
         <item name="android:layout_width">@dimen/Button</item>
     </style>
 
+    <style name="tombol_frag1">
+        <item name="android:layout_width">@dimen/button_width_frag1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:textSize">@dimen/text_size_frag1ico</item>
+    </style>
+
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

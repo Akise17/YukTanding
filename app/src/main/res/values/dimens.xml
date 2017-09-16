@@ -3,6 +3,11 @@
     <item name="match_parent" format="integer" type="dimen">-1</item>
     <item name="wrap_content" format="integer" type="dimen">-2</item>
 
+    <!--fragment 1-->
+    <dimen name="button_width_frag1">120dp</dimen>
+    <dimen name="text_size_frag1ico">12sp</dimen>
+    <!--fragment 1-->
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_guide">32dp</dimen>
@@ -19,5 +24,6 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="profil_photo_width">80dp</dimen>
     <dimen name="profil_photo_height">80dp</dimen>
-    <dimen name="button_width_frag1">130dp</dimen>
+
+
 </resources>

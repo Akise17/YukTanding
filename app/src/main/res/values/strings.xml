@@ -54,6 +54,9 @@
     <string name="title_activity_pesan_lapngan">PesanLapangan</string>
     <string name="title_activity_cari_lawan">CariLawan</string>
     <string name="title_activity_buat_tim">ActivityBuatTim</string>
+    <string name="frag1_txt_btn_futsal">Futsal</string>
+    <string name="frag1_txt_btn_bultang">Bulu Tangkis</string>
+    <string name="frag1_txt_btn_asg">Airsoft Gun</string>
 
     <array name="daerah_tim">
         <item>Pilih Daerah</item>
