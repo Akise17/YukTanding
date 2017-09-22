@@ -20,6 +20,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 
 import android.widget.TextView
@@ -45,6 +46,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
     private var mGoogleApiClient: GoogleApiClient? = null
     private val RC_SIGN_IN = 100
     private var toast: Toast?= null
+    private var btn_F: Button?=null
     var back1kali = false
     //variable fire base [End]
 
@@ -66,7 +68,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
         Log.d(TAG,"setelah toolbar dan pagerAdapter")
-5
+
         // Set up the ViewPager with the sections adapter.
         mViewPager = findViewById(R.id.container) as ViewPager
         mViewPager!!.adapter = mSectionsPagerAdapter
@@ -80,6 +82,11 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.menu.getItem(1).isChecked = true //posisi nav bar aktif
         Log.d(TAG," setelah bootomnav")
+    }
+
+    fun make_toast(text : String){
+        val tst= Toast.makeText(this, text, Toast.LENGTH_SHORT)
+        tst.show()
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {

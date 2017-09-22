@@ -32,7 +32,7 @@
         <Button
             android:id="@+id/btn_bultang"
             style="@style/tombol_frag1"
-            android:drawableTop="@drawable/icon_bola"
+            android:drawableTop="@drawable/icon_shuttle_cock"
             android:text="@string/frag1_txt_btn_bultang"
             app:layout_constraintLeft_toRightOf="@+id/btn_futsal"
             app:layout_constraintRight_toLeftOf="@+id/btn_asg"
@@ -41,11 +41,34 @@
         <Button
             android:id="@+id/btn_asg"
             style="@style/tombol_frag1"
-            android:drawableTop="@drawable/icon_bola"
+            android:drawableTop="@drawable/icon_gun"
             android:text="@string/frag1_txt_btn_asg"
             app:layout_constraintLeft_toRightOf="@+id/btn_bultang"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_event" />
+
+
+        <Button
+            android:id="@+id/btn_bowling"
+            style="@style/tombol_frag1"
+            android:drawableTop="@drawable/icon_bowling"
+            android:text="@string/frag1_txt_btn_bowling"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/btn_futsal"
+            app:layout_constraintTop_toBottomOf="@+id/btn_futsal" />
+
+        <TextView
+            android:id="@+id/txt_avail_frag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/frag1_txt_avail"
+            android:textSize="@dimen/frag1_txt_size_avail"
+            app:layout_constraintTop_toBottomOf="@id/btn_bowling"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="16dp"
+            />
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycle_view"
@@ -57,8 +80,8 @@
             android:layout_marginTop="8dp"
             android:background="#b7b7b7"
             android:focusable="false"
-            app:layout_constraintTop_toBottomOf="@+id/btn_bultang">
-            
+            app:layout_constraintTop_toBottomOf="@+id/txt_avail_frag1">
+
         </android.support.v7.widget.RecyclerView>
 
     </android.support.constraint.ConstraintLayout>
