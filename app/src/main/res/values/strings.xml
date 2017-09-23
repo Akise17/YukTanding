@@ -59,6 +59,7 @@
     <string name="frag1_txt_btn_asg">Airsoftgun</string>
     <string name="frag1_txt_btn_bowling">Bowling</string>
     <string name="frag1_txt_avail">Available Match</string>
+    <string name="frag1_txt_create_match">Create Match</string>
 
     <array name="daerah_tim">
         <item>Pilih Daerah</item>

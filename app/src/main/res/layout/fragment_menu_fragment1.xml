@@ -20,6 +20,18 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
+        <TextView
+            android:id="@+id/txt_create"
+            android:text="@string/frag1_txt_create_match"
+            android:textSize="@dimen/frag1_txt_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/img_event"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"/>
+
         <Button
             android:id="@+id/btn_futsal"
             style="@style/tombol_frag1"
@@ -27,7 +39,7 @@
             android:text="@string/frag1_txt_btn_futsal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/btn_bultang"
-            app:layout_constraintTop_toBottomOf="@+id/img_event" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_create" />
 
         <Button
             android:id="@+id/btn_bultang"
@@ -36,7 +48,7 @@
             android:text="@string/frag1_txt_btn_bultang"
             app:layout_constraintLeft_toRightOf="@+id/btn_futsal"
             app:layout_constraintRight_toLeftOf="@+id/btn_asg"
-            app:layout_constraintTop_toBottomOf="@+id/img_event" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_create" />
 
         <Button
             android:id="@+id/btn_asg"
@@ -45,7 +57,7 @@
             android:text="@string/frag1_txt_btn_asg"
             app:layout_constraintLeft_toRightOf="@+id/btn_bultang"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_event" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_create" />
 
 
         <Button
@@ -62,12 +74,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/frag1_txt_avail"
-            android:textSize="@dimen/frag1_txt_size_avail"
+            android:textSize="@dimen/frag1_txt_size"
             app:layout_constraintTop_toBottomOf="@id/btn_bowling"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="16dp"
-            />
+            android:layout_marginStart="16dp"/>
 
 
         <android.support.v7.widget.RecyclerView

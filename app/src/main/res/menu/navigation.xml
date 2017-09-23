@@ -5,7 +5,7 @@
         android:id="@+id/navigation_pesanLapangan"
         android:icon="@drawable/ic_book_black_24dp"
         android:orderInCategory="1"
-        android:title="Pesan Lapangan" />
+        android:title="Jadwal" />
 
     <item
         android:id="@+id/navigation_menu"
@@ -17,6 +17,6 @@
         android:id="@+id/navigation_cariLawan"
         android:icon="@drawable/ic_people_outline_black_24dp"
         android:orderInCategory="3"
-        android:title="Cari Lawan" />
+        android:title="Squad" />
 
 </menu>

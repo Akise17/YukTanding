@@ -29,8 +29,9 @@
 
                 <ImageView
                     android:id="@+id/img_toolBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:scaleType="centerInside"
                     android:src="@mipmap/yuklogo"/>
 
             </android.support.v7.widget.Toolbar>
