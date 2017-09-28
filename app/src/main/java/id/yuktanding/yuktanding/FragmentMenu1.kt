@@ -1,6 +1,7 @@
 package id.yuktanding.yuktanding
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,19 +13,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.daimajia.slider.library.SliderLayout
 
 import java.util.ArrayList
+import com.daimajia.slider.library.SliderTypes.TextSliderView
+import com.daimajia.slider.library.SliderTypes.BaseSliderView
+
 
 class FragmentMenu1 : Fragment() {
 
     internal lateinit var jadwalArrayList: ArrayList<ItemJadwal>
     internal lateinit var jadwalRecyclerView: RecyclerView
-    private val TAG= "Disini Fragment 1 "
-    var pos: Int?=null
 
-    fun FragmentMenu1(nPos: Int){
-        pos=nPos
-    }
+    private val TAG = "Disini Fragment 1 "
+    var i = 0
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -32,25 +34,40 @@ class FragmentMenu1 : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_menu_fragment1, container, false)
         Log.d(TAG, "onCreateView")
 
+        val sliderShow = view.findViewById(R.id.img_event) as SliderLayout
+        val textSliderView = TextSliderView(context)
+        val textSliderView2 = TextSliderView(context)
+
+        textSliderView
+                .description("Promo 1")
+                .image(R.drawable.event1)
+        textSliderView2
+                .description("Promo 2")
+                .image(R.drawable.event2)
+
+        sliderShow.addSlider(textSliderView)
+        sliderShow.addSlider(textSliderView2)
+
+        //==========================================================================================
         jadwalArrayList = ArrayList()
 
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Area 81", "23 agustus 14.00 - 15.00", R.drawable.icon_gun))
-        jadwalArrayList.add(ItemJadwal("Gloria", "24 agustus 14.00 - 15.00", R.drawable.icon_shuttle_cock))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Area 81", "23 agustus 14.00 - 15.00", R.drawable.icon_gun_small))
+        jadwalArrayList.add(ItemJadwal("Gloria", "24 agustus 14.00 - 15.00", R.drawable.icon_shuttle_cock_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
 
         jadwalRecyclerView = view.findViewById(R.id.recycle_view) as RecyclerView
         val linearLayoutManager = LinearLayoutManager(context)
         jadwalRecyclerView.layoutManager = linearLayoutManager
-        jadwalRecyclerView.isFocusable=false
+        jadwalRecyclerView.isFocusable = false
 
         val itemAdapter = ItemJadwalAdapter(jadwalArrayList, context)
         jadwalRecyclerView.adapter = itemAdapter
@@ -86,9 +103,7 @@ class FragmentMenu1 : Fragment() {
             startActivity(intent)
         }
 
-
         return view
     }
-
 
 }// Required empty public constructor

@@ -16,24 +16,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:windowSoftInputMode="stateHidden">
+
+        <!--=========================================Kepake======================================-->
         <activity android:name=".Login" />
-        <activity android:name=".SignUp" />
-        <activity
-            android:name=".MenuHome"
-            android:label="@string/title_activity_menu_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <!--======================================Splash screen==================================-->
         <activity
             android:name=".ActivitySplashScreen"
             android:label="@string/app_name"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <!--====================================Splash screen end================================-->
         <activity
             android:name=".ActivityMain"
             android:label="YukTanding"
@@ -97,6 +93,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="id.yuktanding.yuktanding.ActivityMain" />
         </activity>
+
+        <activity android:name=".WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--=======================================Kepake end====================================-->
+
+        <!--=========================================Gak kepake==================================-->
+        <activity android:name=".SignUp" />
+        <activity
+            android:name=".MenuHome"
+            android:label="@string/title_activity_menu_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--=======================================Gak kepake end================================-->
     </application>
 
 </manifest>

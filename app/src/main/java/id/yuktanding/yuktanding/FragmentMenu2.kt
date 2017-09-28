@@ -1,6 +1,7 @@
 package id.yuktanding.yuktanding
 
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toolbar
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.GoogleApiClient
@@ -49,7 +51,6 @@ class FragmentMenu2 : Fragment() {
                 .into(foto)
         return view
     }
-
 
     private fun initGso() {
         Log.d(TAG, "sebelum gso")

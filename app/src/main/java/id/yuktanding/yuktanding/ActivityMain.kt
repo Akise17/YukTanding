@@ -1,6 +1,7 @@
 package id.yuktanding.yuktanding
 
 import android.content.Intent
+import android.os.Build
 import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -11,17 +12,14 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.os.Bundle
 import android.os.Handler
+import android.support.annotation.RequiresApi
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
 
 import android.widget.TextView
 import android.widget.Toast
@@ -30,10 +28,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
-import com.mikhaellopez.circularimageview.CircularImageView
-import com.squareup.picasso.Picasso
-import java.util.*
 
 class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedListener{
 
@@ -46,12 +40,13 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
     private var mGoogleApiClient: GoogleApiClient? = null
     private val RC_SIGN_IN = 100
     private var toast: Toast?= null
-    private var btn_F: Button?=null
     var back1kali = false
+    var toolbar : Toolbar?=null
     //variable fire base [End]
 
     private var backButtonCount = 0 //buat toast press again to exit
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
@@ -61,9 +56,10 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         initGso() //inisialisasi google (TODO gw gak tau ini perlu dipanggil di setiap activity apa enggak)
         Log.d(TAG,"setelah init gso")
 
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle(null)
+        supportActionBar?.title="Home"
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
@@ -72,17 +68,62 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         // Set up the ViewPager with the sections adapter.
         mViewPager = findViewById(R.id.container) as ViewPager
         mViewPager!!.adapter = mSectionsPagerAdapter
+
+
+
         Log.d(TAG,"setelah viewPager")
 
-        val tabLayout = findViewById(R.id.tabs) as TabLayout //TODO ganti warna background tab title
+        val tabLayout = findViewById(R.id.tabs) as TabLayout
         tabLayout.setupWithViewPager(mViewPager)
+        tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_tab0_selected)
+        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_tab1_idle)
+        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_tab2_idle)
+
         Log.d(TAG,"setelah tab layout")
 
-        val navigation = findViewById(R.id.navigation) as BottomNavigationView
+        val navigation = findViewById(R.id.navigation) as BottomNavigationView //
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.menu.getItem(1).isChecked = true //posisi nav bar aktif
         Log.d(TAG," setelah bootomnav")
-    }
+
+
+        mViewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+
+
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+            override fun onPageSelected(position: Int) {
+                Log.d(TAG,"onPageSelected + $position")
+                when(position){
+                    0->
+                    {
+                        toolbar!!.title="Home"
+                        tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_tab0_selected)
+                        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_tab1_idle)
+                        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_tab2_idle)
+                    }
+                    1->
+                    {
+                        toolbar!!.title="Profile"
+                        tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_tab0_idle)
+                        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_tab1_selected)
+                        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_tab2_idle)
+                    }
+                    2->
+                    {
+                        toolbar!!.title="Friend"
+                        tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_tab0_idle)
+                        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_tab1_idle)
+                        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_tab2_selected)
+                    }
+                }
+            }
+        })
+    }//========================================================= onCreate END
 
     fun make_toast(text : String){
         val tst= Toast.makeText(this, text, Toast.LENGTH_SHORT)
@@ -195,12 +236,15 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
     /**
      * A placeholder fragment containing a simple view.
      */
+
     class PlaceholderFragment : Fragment() {
         override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
             val rootView = inflater!!.inflate(R.layout.fragment_main2, container, false)
             val textView = rootView.findViewById(R.id.section_label) as TextView
             textView.text = getString(R.string.section_format, arguments.getInt(ARG_SECTION_NUMBER))
+
+            Log.d("disini","placeholderFragment oncreateView")
             return rootView
         }
 
@@ -230,7 +274,9 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
+
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+
 
         override fun getItem(position: Int): Fragment {
             // getItem is called to instantiate the fragment for the given page.
@@ -249,12 +295,14 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
 
         override fun getPageTitle(position: Int): CharSequence? {
             when (position) {
-                0 -> return "Home"
-                1 -> return "Profile"
-                2 -> return "TIM"
+                0 -> return ""
+                1 -> return ""
+                2 -> return ""
             }
+            Log.d("disini","getPageTitle")
             return null
         }
+
     }
 
     private fun initGso() {
