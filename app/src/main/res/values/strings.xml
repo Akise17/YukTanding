@@ -60,7 +60,7 @@
     <string name="frag1_txt_btn_bowling">Bowling</string>
     <string name="frag1_txt_avail">Available Match</string>
     <string name="frag1_txt_create_match">Create Match</string>
-    <string name="txt_frag1_feature">Additional Feature</string>
+    <string name="txt_frag1_feature">Additional Feature(Cooming Soon)</string>
 
     <array name="daerah_tim">
         <item>Pilih Daerah</item>

@@ -1,12 +1,12 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <item name="match_parent" format="integer" type="dimen">-1</item>
-    <item name="wrap_content" format="integer" type="dimen">-2</item>
+    <item name="wrap_content" format="integer" type="dimen">255</item>
 
-    <!--fragment 1-->
-    <dimen name="button_width_frag1">120dp</dimen>
+    <!--===================================================fragment 1============================-->
+    <dimen name="frag1_button_width">120dp</dimen>
     <dimen name="text_size_frag1ico">12sp</dimen>
-    <!--fragment 1-->
+    <!--===================================================fragment 1============================-->
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>

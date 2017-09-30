@@ -60,10 +60,12 @@
     </style>
 
     <style name="tombol_frag1">
-        <item name="android:layout_width">@dimen/button_width_frag1</item>
+        <item name="android:layout_width">@dimen/frag1_button_width</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:gravity">center|bottom</item>
         <item name="android:textSize">@dimen/text_size_frag1ico</item>
     </style>
 
