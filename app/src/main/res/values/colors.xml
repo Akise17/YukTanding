@@ -17,6 +17,8 @@
     <color name="google_red">#dd4b39</color>
     <color name="link">#3949ab</color>
     <color name="recylerBackgroun">#FFFFFF</color>
+    <color name="frag1_tombol_tint_en">#FFFFFF</color>
+    <color name="frag1_tombol_tint_dis">#90000000</color>
     <color name="tabTxtColor">#787878</color>
     <color name="tabTxtColorSelect">#ffffff</color>
     <color name="tabBackgound">#000</color>

@@ -35,7 +35,7 @@
         <Button
             android:id="@+id/btn_futsal"
             style="@style/tombol_frag1"
-            android:backgroundTint="@color/recylerBackgroun"
+            android:backgroundTint="@color/frag1_tombol_tint_en"
             android:drawableTop="@drawable/icon_bola"
             android:text="@string/frag1_txt_btn_futsal"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -45,9 +45,9 @@
         <Button
             android:id="@+id/btn_bultang"
             style="@style/tombol_frag1"
-            android:backgroundTint="@color/recylerBackgroun"
             android:drawableTop="@drawable/icon_shuttle_cock"
             android:text="@string/frag1_txt_btn_bultang"
+            android:clickable="false"
             app:layout_constraintLeft_toRightOf="@+id/btn_futsal"
             app:layout_constraintRight_toLeftOf="@+id/btn_asg"
             app:layout_constraintTop_toBottomOf="@+id/txt_create" />
@@ -55,9 +55,9 @@
         <Button
             android:id="@+id/btn_asg"
             style="@style/tombol_frag1"
-            android:backgroundTint="@color/recylerBackgroun"
             android:drawableTop="@drawable/icon_gun"
             android:text="@string/frag1_txt_btn_asg"
+            android:clickable="false"
             app:layout_constraintLeft_toRightOf="@+id/btn_bultang"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_create" />
@@ -66,9 +66,9 @@
         <Button
             android:id="@+id/btn_bowling"
             style="@style/tombol_frag1"
-            android:backgroundTint="@color/recylerBackgroun"
             android:drawableTop="@drawable/icon_bowling"
             android:text="@string/frag1_txt_btn_bowling"
+            android:clickable="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@id/btn_futsal"
             app:layout_constraintTop_toBottomOf="@+id/btn_futsal" />

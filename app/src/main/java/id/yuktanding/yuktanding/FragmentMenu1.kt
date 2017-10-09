@@ -84,24 +84,24 @@ class FragmentMenu1 : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        btn_Bul.setOnClickListener {
+        /*btn_Bul.setOnClickListener {
             Log.d(TAG, "tombol bultang diklik")
             val intent = Intent(this.context, ActivityPesanBultang::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
-        }
-        btn_A.setOnClickListener {
+        }*/
+        /*btn_A.setOnClickListener {
             Log.d(TAG, "tombol asg diklik")
             val intent = Intent(this.context, ActivityPesanASG::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
-        }
-        btn_bow.setOnClickListener {
+        }*/
+        /*btn_bow.setOnClickListener {
             Log.d(TAG, "tombol bowling diklik")
             val intent = Intent(this.context, ActivityPesanBowling::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
-        }
+        }*/
 
         return view
     }
