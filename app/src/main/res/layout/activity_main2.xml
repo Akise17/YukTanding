@@ -59,8 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="?android:attr/windowBackground"
-            app:itemTextColor="@color/tabTxtColor"
+            android:background="#000000"
+            app:itemTextColor="#FFFFFF"
             app:menu="@menu/navigation" />
     </LinearLayout>
 
