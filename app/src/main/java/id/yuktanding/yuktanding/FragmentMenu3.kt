@@ -73,7 +73,13 @@ class FragmentMenu3 : Fragment() {
 
         timArrayList = ArrayList()
 
-        timArrayList.add(ItemTim("Lontong FC", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 1", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 2", "P:32 W:12 D:1 L:19", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 3", "P:23 W:10 D:3 L:10", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 4", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 5", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 6", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+
 
         timRecyclerView = view.findViewById(R.id.tim_recyclerView) as RecyclerView
         val linearLayoutManager = LinearLayoutManager(context)

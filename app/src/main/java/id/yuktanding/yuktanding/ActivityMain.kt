@@ -33,6 +33,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     private var mViewPager: ViewPager? = null
+    private var navigation: BottomNavigationView?=null
 
     //variable firebase [Start]
     private val TAG = "Disini Main Home  "
@@ -69,8 +70,6 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         mViewPager = findViewById(R.id.container) as ViewPager
         mViewPager!!.adapter = mSectionsPagerAdapter
 
-
-
         Log.d(TAG,"setelah viewPager")
 
         val tabLayout = findViewById(R.id.tabs) as TabLayout
@@ -81,9 +80,9 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
 
         Log.d(TAG,"setelah tab layout")
 
-        val navigation = findViewById(R.id.navigation) as BottomNavigationView //
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        navigation.menu.getItem(1).isChecked = true //posisi nav bar aktif
+        navigation = findViewById(R.id.navigation) as BottomNavigationView //
+        navigation!!.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation!!.menu.getItem(1).isChecked = true //posisi nav bar aktif
         Log.d(TAG," setelah bootomnav")
 
 
@@ -123,12 +122,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
                 }
             }
         })
-    }//========================================================= onCreate END
-
-    fun make_toast(text : String){
-        val tst= Toast.makeText(this, text, Toast.LENGTH_SHORT)
-        tst.show()
-    }
+    }//========================================================= onCreate END=======================
 
     override fun onConnectionFailed(p0: ConnectionResult) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

@@ -11,7 +11,7 @@
         android:id="@+id/navigation_menu"
         android:icon="@drawable/ic_bnav_dashboard_24dp"
         android:orderInCategory="2"
-        android:title="Main Menu" />
+        android:title="Dashboard" />
 
     <item
         android:id="@+id/navigation_cariLawan"

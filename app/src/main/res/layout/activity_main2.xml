@@ -41,9 +41,8 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/tabBackgound"
-                app:tabTextColor="@color/tabTxtColor"
-                app:tabSelectedTextColor="@color/tabTxtColorSelect"/>
+                android:background="@color/colorPrimaryLight"
+                app:tabIndicatorColor="@color/colorSecondary"/>
 
         </android.support.design.widget.AppBarLayout>
 
@@ -59,8 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="#000000"
-            app:itemTextColor="#FFFFFF"
+            android:background="@color/colorPrimaryDark"
+            app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+            app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
             app:menu="@menu/navigation" />
     </LinearLayout>
 

@@ -119,7 +119,7 @@
             style="@style/tombol_frag1"
             android:clickable="false"
             android:drawableTop="@mipmap/ic_launcher"
-            android:text="YukMarried"
+            android:text="Ranking"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/btn_dummy1"
             app:layout_constraintTop_toBottomOf="@+id/txt_feature_frag1" />
@@ -127,10 +127,9 @@
         <Button
             android:id="@+id/btn_dummy1"
             style="@style/tombol_frag1"
-            android:backgroundTint="@color/recylerBackgroun"
-            android:drawableTop="@drawable/icon_bowling"
-            android:text="@string/frag1_txt_btn_bowling"
-            android:visibility="invisible"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:text="Official Store"
+            android:visibility="visible"
             app:layout_constraintLeft_toRightOf="@+id/btn_yukmarried"
             app:layout_constraintRight_toLeftOf="@+id/btn_dummy2"
             app:layout_constraintTop_toBottomOf="@+id/txt_feature_frag1" />
