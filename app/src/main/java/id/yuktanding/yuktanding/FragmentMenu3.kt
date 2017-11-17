@@ -1,6 +1,7 @@
 package id.yuktanding.yuktanding
 
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -29,16 +30,20 @@ class FragmentMenu3 : Fragment() {
 
     var userUID: String? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater!!.inflate(R.layout.fragment_menu_fragment3, container, false)
 
+        Log.d(TAG,"sebelum user")
         user = FirebaseAuth.getInstance().currentUser!!
-        if (user != null) userUID = user.uid
+//        if (user != null) userUID = user.uid
+        userUID = user.uid
 
+        Log.d(TAG,"sebelum myRef " + userUID)
+        /*
         myRef = databaseTim.getReference().child(userUID)
 
+        Log.d(TAG,"sebelum addchild")
         myRef.addChildEventListener(object : ChildEventListener{
             override fun onCancelled(p0: DatabaseError?) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -61,13 +66,21 @@ class FragmentMenu3 : Fragment() {
             }
 
         })
+        */
+
         Log.d(TAG, "onCreateView")
 
         timArrayList = ArrayList()
 
-        timArrayList.add(ItemTim("Lontong FC", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 1", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 2", "P:32 W:12 D:1 L:19", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 3", "P:23 W:10 D:3 L:10", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 4", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 5", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
+        timArrayList.add(ItemTim("Your Friend 6", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
 
-        timRecyclerView = view.findViewById(R.id.tim_recyclerView) as RecyclerView
+
+        timRecyclerView = view.findViewById<RecyclerView>(R.id.tim_recyclerView)
         val linearLayoutManager = LinearLayoutManager(context)
         timRecyclerView.layoutManager = linearLayoutManager
 

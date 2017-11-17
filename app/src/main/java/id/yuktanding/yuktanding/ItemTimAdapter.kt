@@ -20,9 +20,9 @@ class ItemTimAdapter(private val items: ArrayList<ItemTim>, private val context:
 
         init {
 
-            namaTim = itemView.findViewById(R.id.txt_namaTim) as TextView
-            statusTim = itemView.findViewById(R.id.txt_statusTim) as TextView
-            imgTim = itemView.findViewById(R.id.img_tim) as ImageView
+            namaTim = itemView.findViewById<TextView>(R.id.txt_namaTim)
+            statusTim = itemView.findViewById<TextView>(R.id.txt_statusTim)
+            imgTim = itemView.findViewById<ImageView>(R.id.img_tim)
         }
     }
 

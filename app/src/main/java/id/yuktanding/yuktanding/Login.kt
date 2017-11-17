@@ -55,6 +55,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
     private val RC_SIGN_IN = 100
     private val TAG = "Disini"
     private var backButtonCount = 0
+    var loginstat = false
     //phoneAuth
     private val KEY_VERIFY_IN_PROGRESS = "key_verify_in_progress"
     private val STATE_INITIALIZED = 1
@@ -78,27 +79,27 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
 
         //uil = findViewById(R.id.user_input_layout_log) as TextInputLayout
         //uie = findViewById(R.id.user_input_edit_log) as TextInputEditText
-        conlay = findViewById(R.id.constraint_log) as ConstraintLayout
-        btnSignin = findViewById(R.id.btn_Login) as Button
-        btnSignGoogle = findViewById(R.id.g_signin_log) as SignInButton
+        conlay = findViewById<ConstraintLayout>(R.id.constraint_log)
+        btnSignin = findViewById<Button>(R.id.btn_Login)
+        btnSignGoogle = findViewById<SignInButton>(R.id.g_signin_log)
         //link = findViewById(R.id.txt_tanya) as TextView
         Log.d(TAG, "setelah deklarasi tombol")
 
-        val intente = Intent(this, MenuHome::class.java)
+        val intente = Intent(this, ActivityMain::class.java)
 
         Log.d(TAG, "setelah deklarasi intent")
-        mAuth = FirebaseAuth.getInstance()
-        initGso()
+        mAuth = FirebaseAuth.getInstance() //untuk cek akun firebase dalam instance
+        initGso() //inisasi Gso
 
         btnSignGoogle!!.setOnClickListener {
             Log.d(TAG," Google sign in diklik")
             signIn()
-        }
+        }  //Program tombol google
         btnSignin!!.setOnClickListener {
             Log.d(TAG," tombol masuk diklik")
             signOut() //haha
 
-        }
+        } //Program tombol signin
     }
     //oncreate end
     //==============================================================================================
@@ -169,7 +170,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         backButtonCount=0
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) { //[1]
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
@@ -181,41 +182,10 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         }
     }
 
-    // [START auth_with_google]
-    private fun firebaseAuthWithGoogle(acct : GoogleSignInAccount) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.idToken)
-
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        mAuth!!.signInWithCredential(credential)
-            .addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
-                    override fun onComplete(task: Task<AuthResult>) {
-
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success")
-                            val user = mAuth!!.getCurrentUser()
-                            if(user!!.isEmailVerified==false) {
-                                user.sendEmailVerification()
-                            }
-                            val intente = Intent(this@Login, ActivityMain::class.java)
-                            intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                            startActivity(intente)
-                            //updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException())
-                            //updateUI(null);
-                        }
-                    }
-                })
-    }
-    // [END auth_with_google]
-
-    private fun handleSignInResult(result: GoogleSignInResult) {
+    private fun handleSignInResult(result: GoogleSignInResult) { //[2]
         Log.d(TAG, "handleSignInResult:" + result.isSuccess)
         if (result.isSuccess) {
             // Signed in successfully, show authenticated UI.
-            Toast.makeText(this, "Sign In Berhasil", Toast.LENGTH_SHORT).show()
             val acct = result.signInAccount
             Log.d(TAG,"" +acct)
             Log.d(TAG, "" + acct!!.displayName)
@@ -225,7 +195,7 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
             Log.d(TAG,"mgoogleapi $mGoogleApiClient")
             val account = result.signInAccount
             if (account != null) {
-                firebaseAuthWithGoogle(account)
+                    firebaseAuthWithGoogle(account)
             }
         } else {
             // Signed out, show unauthenticated UI.
@@ -233,6 +203,36 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
             //updateUI(false)
         }
     }
+
+    // [START auth_with_google]
+    private fun firebaseAuthWithGoogle(acct : GoogleSignInAccount) { //[3]
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.idToken)
+
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+
+        mAuth!!.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithCredential:success")
+                    Toast.makeText(this@Login, "Sign In Berhasil", Toast.LENGTH_SHORT).show()
+                    val user = mAuth!!.currentUser
+                    if(!user!!.isEmailVerified) {
+                        user.sendEmailVerification()
+                    }
+                    loginstat=true
+                    val intente = Intent(this@Login, ActivityMain::class.java)
+                    intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intente)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(this@Login, "Sign In Gagal", Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    loginstat=false
+                }
+            }
+    }
+    // [END auth_with_google]
 
     // [START signIn]
     private fun signIn() {

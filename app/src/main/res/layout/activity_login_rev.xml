@@ -7,14 +7,14 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:id="@+id/constraint_log"
-    android:background="@drawable/splash_gradient"
+    android:background="@drawable/lapangan_hijau"
     tools:context="id.yuktanding.yuktanding.SignUp">
 
     <ImageView
         android:id="@+id/logo_log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/yuklogo"
+        android:src="@drawable/logo_6_back"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +42,7 @@
     <Button
         android:id="@+id/btn_Login"
         style="@style/tombol"
-        android:backgroundTint="@color/oren"
+        android:backgroundTint="@color/colorSecondaryDark"
         android:drawableStart="@drawable/ic_phone_android"
         android:drawablePadding="16dp"
         android:text="@string/login"

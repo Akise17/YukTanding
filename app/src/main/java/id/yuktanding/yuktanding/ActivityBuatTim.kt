@@ -42,21 +42,21 @@ class ActivityBuatTim : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buat_tim)
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        textViewAnggota = findViewById(R.id.txt_tambah_anggota_tim) as TextView
-        editGk = findViewById(R.id.edit_pos_gk) as TextInputEditText
-        editAnchor = findViewById(R.id.edit_pos_anchor) as TextInputEditText
-        editLeftFlank = findViewById(R.id.edit_pos_left_flank) as TextInputEditText
-        editRightFlank = findViewById(R.id.edit_pos_right_flank) as TextInputEditText
-        editPivot = findViewById(R.id.edit_pos_pivot) as TextInputEditText
-        editNamaTim = findViewById(R.id.edit_nama_tim) as TextInputEditText
+        textViewAnggota = findViewById<TextView>(R.id.txt_tambah_anggota_tim)
+        editGk = findViewById<TextInputEditText>(R.id.edit_pos_gk)
+        editAnchor = findViewById<TextInputEditText>(R.id.edit_pos_anchor)
+        editLeftFlank = findViewById<TextInputEditText>(R.id.edit_pos_left_flank)
+        editRightFlank = findViewById<TextInputEditText>(R.id.edit_pos_right_flank)
+        editPivot = findViewById<TextInputEditText>(R.id.edit_pos_pivot)
+        editNamaTim = findViewById<TextInputEditText>(R.id.edit_nama_tim)
 
-        buttonBuatTim = findViewById(R.id.button_buat_tim) as Button
+        buttonBuatTim = findViewById<Button>(R.id.button_buat_tim)
 
-        spinnerOlahraga = findViewById(R.id.spinner_olahraga) as Spinner
-        spinnerDaerah = findViewById(R.id.spinner_daerah) as Spinner
+        spinnerOlahraga = findViewById<Spinner>(R.id.spinner_olahraga)
+        spinnerDaerah = findViewById<Spinner>(R.id.spinner_daerah)
 
         spinnerDaerah.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {

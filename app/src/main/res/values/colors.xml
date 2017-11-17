@@ -1,25 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff6f00</color>
-    <color name="colorPrimaryDark">#bf360c</color>
-    <color name="colorAccent">#f44336</color>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryLight">#484848</color>
+    <color name="colorSecondary">#b71c1c</color>
+    <color name="colorSecondaryDark">#7f0000</color>
+    <color name="colorSecondaryLight">#f05545</color>
+    <color name="colorPrimaryAccent">#7f0000</color>
+
     <color name="yukTandingOren">#d14b02</color>
-    <color name="yukTandingGreen">#77dd77</color>
-    <color name="oren">#ffa726</color>
-    <color name="background_prime">#000000</color>
+    <color name="yukTandingPastel">#77dd77</color>
+    <color name="yukTandingGreen">#1d5f04</color>
+    <color name="background_prime">#401a1a1a</color>
     <color name="color_text_black">#000000</color>
+    <color name="color_text_white">#FFFF</color>
     <color name="color_input_hint">#FFF</color>
-    <color name="color_text_highlight">#ffcc80</color>
+    <color name="color_text_highlight">#cce4e4e4</color>
     <color name="color_text">#FFF</color>
-    <color name="color_text_background">#b4331c0b</color>
+    <color name="color_text_background">#b4ffffff</color>
     <color name="color_text_background_trans">#00ffffff</color>
     <color name="google_red">#dd4b39</color>
-    <color name="color_con_normal">#bdbdbd</color>
-    <color name="color_con_activated">#efebe9</color>
-    <color name="color_con_highlight">#ffcc80</color>
     <color name="link">#3949ab</color>
-    <color name="recylerBackgroun">#b8c9b3</color>
+    <color name="recylerBackgroun">#FFFFFF</color>
+    <color name="frag1_tombol_tint_en">#FFFFFF</color>
+    <color name="frag1_tombol_tint_dis">#90000000</color>
     <color name="tabTxtColor">#787878</color>
-    <color name="tabTxtColorSelect">#000000</color>
-    <color name="tabBackgound">#FFFFFF</color>
+    <color name="tabTxtColorSelect">#ffffff</color>
+    <color name="tabBackgound">#000</color>
+    <color name="toolbarColor">#000</color>
+
+    <!--welcome activity-->
+    <!-- Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen2">#14a895</color>
+    <color name="dot_dark_screen3">#2278d4</color>
+    <color name="dot_dark_screen4">#a854d4</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen2">#8cf9eb</color>
+    <color name="dot_light_screen3">#93c6fd</color>
+    <color name="dot_light_screen4">#e4b5fc</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+    <!--welcome end-->
 </resources>

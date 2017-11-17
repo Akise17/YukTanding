@@ -1,40 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_namaLapangan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/hello_blank_fragment"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txt_jamMain"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/img_profil"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_jamMain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_namaLapangan"
+        android:layout_marginStart="16dp"
+        android:text="@string/hello_blank_fragment"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/img_profil"
+        app:layout_constraintTop_toBottomOf="@+id/txt_namaLapangan" />
 
     <ImageView
         android:id="@+id/img_profil"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@mipmap/ic_launcher_round"/>
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="0dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_jamMain"
+        app:layout_constraintLeft_toRightOf="@+id/txt_namaLapangan"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_namaLapangan" />
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:src="#501a1a1a"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_jamMain"
+        app:layout_constraintRight_toRightOf="@+id/img_profil"
+        app:layout_constraintLeft_toLeftOf="@+id/txt_jamMain"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/txt_namaLapangan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment"
-            android:layout_marginLeft="8dp"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/txt_jamMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment"
-            android:layout_marginLeft="8dp"
-            android:textSize="14sp"
-            android:layout_below="@+id/txt_namaLapangan"/>
-
-    </RelativeLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

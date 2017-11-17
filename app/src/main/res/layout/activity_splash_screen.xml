@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="id.yuktanding.yuktanding.ActivitySplashScreen"
-    android:background="@drawable/splash_gradient">
+    android:background="@drawable/lapangan_hijau">
 
     <ImageView
         android:id="@+id/img_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/yuklogo"
+        android:src="@drawable/logo_6_back"
         android:layout_centerInParent="true"/>
 
     <ProgressBar

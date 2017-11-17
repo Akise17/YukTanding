@@ -34,12 +34,12 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_up)
-        ib = findViewById(R.id.image_background_sign) as ImageView
-        sb = findViewById(R.id.btn_sign_up) as Button
-        pwEditLay = findViewById(R.id.pass_in_sign) as TextInputLayout
-        var emailIn = findViewById(R.id.email_input_edit_sign) as TextInputEditText
-        var pwIn1 = findViewById(R.id.pass_input_edit_sign) as TextInputEditText
-        var pwIn2 = findViewById(R.id.pass_re_edit_sign) as TextInputEditText
+        ib = findViewById<ImageView>(R.id.image_background_sign)
+        sb = findViewById<Button>(R.id.btn_sign_up)
+        pwEditLay = findViewById<TextInputLayout>(R.id.pass_in_sign)
+        var emailIn = findViewById<TextInputEditText>(R.id.email_input_edit_sign)
+        var pwIn1 = findViewById<TextInputEditText>(R.id.pass_input_edit_sign)
+        var pwIn2 = findViewById<TextInputEditText>(R.id.pass_re_edit_sign)
         mAuth = FirebaseAuth.getInstance()
 
         kitti("http://yuktanding.id/img/test.html")
@@ -83,7 +83,7 @@ class SignUp : AppCompatActivity() {
     }
 
     private fun setupFloatingLabelError() {
-        val floatingUsernameLabel = findViewById(R.id.email_input_layout_sign) as TextInputLayout
+        val floatingUsernameLabel = findViewById<TextInputLayout>(R.id.email_input_layout_sign)
 
         floatingUsernameLabel.editText!!.addTextChangedListener(object : TextWatcher {
             // ...

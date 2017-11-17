@@ -5,13 +5,14 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorSecondaryDark</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="colorAccent">@color/colorSecondaryDark</item>
     </style>
 
     <style name="Widget" />
@@ -59,9 +60,20 @@
         <item name="android:layout_width">@dimen/Button</item>
     </style>
 
+    <style name="tombol_frag1">
+        <item name="android:layout_width">@dimen/frag1_button_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:gravity">center|bottom</item>
+        <item name="android:textSize">@dimen/text_size_frag1ico</item>
+    </style>
+
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
