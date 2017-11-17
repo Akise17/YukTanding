@@ -23,6 +23,7 @@ import android.view.ViewGroup
 
 import android.widget.TextView
 import android.widget.Toast
+import com.github.kittinunf.fuel.Fuel
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
@@ -41,6 +42,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
     private val RC_SIGN_IN = 100
     private var toast: Toast?= null
     var back1kali = false
+    var access_tok :String?= null
     var toolbar : Toolbar?=null
     //variable fire base [End]
 
@@ -116,8 +118,49 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
                 }
             }
         })
+        request_auth()
     }//========================================================= onCreate END=======================
 
+
+    fun request_auth(){
+        val consumer_key="250TJJnPuZLGd45u1RCUXQar7G44jHr9=SYnYBlo0Fyr5wgMm"
+        val consumer_secret = "SYnYBlo0Fyr5wgMm"
+        var buff : String
+
+        Fuel.post("https://blinke-stage.apigee.net/oauth/token")
+                .header("Authorization" to "Basic MjUwVEpKblB1WkxHZDQ1dTFSQ1VYUWFyN0c0NGpIcjk6U1luWUJsbzBGeXI1d2dNbQ==")
+                .header("Content-Type" to "application/x-www-form-urlencoded")
+                .body("grant_type=client_credentials")
+                .response { request, response, result ->
+                    Log.d(TAG, "${response}")
+                    buff= response.toString()
+                    var x : List<String> = buff.split(",")
+                    for (t: String in x){
+                        if(t.contains("access_token")){
+                            var prefix = "\"access_token\" : "
+                            var noprefix = t.substring(t.indexOf(prefix)+prefix.length)
+                            access_tok= noprefix.removeSurrounding("\"")
+                            Log.d(TAG,"$access_tok")
+                        }
+                    }
+                    get_loc()
+        }
+
+        //if you have body to post it manually
+//        Fuel.post("http://httpbin.org/post").body("{ \"foo\" : \"bar\" }").response { request, response, result ->
+//        }
+    }
+
+    fun get_loc(){
+
+        Fuel.get("https://blinke-stage.apigee.net/io/users/08568290495/location")
+                .header("Authorization" to "Bearer $access_tok")
+                .header("Content-Type" to "application/json")
+                .response { request, response, result ->
+                    Log.d(TAG,"$response")
+                }
+
+    }
     override fun onConnectionFailed(p0: ConnectionResult) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

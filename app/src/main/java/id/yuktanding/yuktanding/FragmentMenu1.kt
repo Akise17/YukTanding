@@ -1,7 +1,6 @@
 package id.yuktanding.yuktanding
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
@@ -18,12 +17,6 @@ import com.daimajia.slider.library.SliderLayout
 
 import java.util.ArrayList
 import com.daimajia.slider.library.SliderTypes.TextSliderView
-import android.opengl.ETC1.getWidth
-import android.opengl.ETC1.getHeight
-import android.widget.LinearLayout
-import android.graphics.BitmapFactory
-import android.graphics.Bitmap
-import android.support.v7.widget.AlertDialogLayout
 import com.squareup.picasso.Picasso
 
 
@@ -62,21 +55,32 @@ class FragmentMenu1 : Fragment() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
 
         dialog.setOnShowListener {
+            val img_al = dialog.findViewById<ImageView>(R.id.img_alert)
+            val img_al2 = dialog.findViewById<ImageView>(R.id.img_alert2)
             Log.d(TAG, "tombol bultang ")
             //val alert_layout = dialog.findViewById<AlertDialogLayout>(R.id.alerlayout)
             Log.d(TAG, "tombol bultang di 1 ")
-            val img_al = dialog.findViewById<ImageView>(R.id.img_alert)
-            val img_al2 = dialog.findViewById<ImageView>(R.id.img_alert2)
             Log.d(TAG, "tombol bultang di 2")
             Picasso.with(context)
                     .load(R.drawable.f1_creatematch)
                     .into(img_al)
             Picasso.with(context)
-                    .load(R.drawable.f1_creatematch)
+                    .load(R.drawable.f1_findmatch)
                     .into(img_al2)
             Log.d(TAG, "tombol bultang di 3")
-
+            img_al!!.setOnClickListener {
+                val intent = Intent(this.context, ActivityPesanFutsal::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
+            img_al2!!.setOnClickListener {
+                val intent = Intent(this.context, ActivityFindMatch::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
         }
+
+
         //==========================================================================================
 
         //==========================================================================================
@@ -102,14 +106,14 @@ class FragmentMenu1 : Fragment() {
 
         btn_F.setOnClickListener {
             Log.d(TAG, "tombol futsal diklik")
-            //dialog.show()
-            val intent = Intent(this.context, ActivityFindMatch::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            dialog.show()
+//            val intent = Intent(this.context, ActivityFindMatch::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//            startActivity(intent)
         }
         btn_Bul.setOnClickListener {
             Log.d(TAG, "tombol bultang diklik")
-            dialog.show()
+            //dialog.show()
             Log.d(TAG, "tombol bultang diklik")
 //            val intent = Intent(this.context, ActivityPesanBultang::class.java)
 //            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

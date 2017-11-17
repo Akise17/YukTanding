@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -36,7 +37,7 @@
     </android.support.v7.widget.RecyclerView>
 
     <RelativeLayout
-        android:id="@+id/venue_filter"
+        android:id="@+id/alertlayout_apf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/apf_float_filter_back"
@@ -44,8 +45,9 @@
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="invisible"
         android:layout_margin="16dp">
+
         <TextView
-            android:id="@+id/txt_pilih_lok"
+            android:id="@+id/txt_pilih_lok_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -54,7 +56,7 @@
             android:text="Lokasi" />
 
         <Spinner
-            android:id="@+id/pilih_lok"
+            android:id="@+id/pilih_lok_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_pilih_lok">
@@ -62,7 +64,7 @@
         </Spinner>
 
         <TextView
-            android:id="@+id/txt_pilih_tgl"
+            android:id="@+id/txt_pilih_tgl_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -71,7 +73,7 @@
             android:layout_below="@id/pilih_lok"/>
 
         <EditText
-            android:id="@+id/edit_tgl"
+            android:id="@+id/edit_tgl_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -85,7 +87,7 @@
             android:layout_alignParentStart="true"/>
 
         <EditText
-            android:id="@+id/edit_jam"
+            android:id="@+id/edit_jam_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -99,7 +101,7 @@
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@id/edit_tgl"/>
         <Button
-            android:id="@+id/btn_apf_filter"
+            android:id="@+id/btn_apf_filter_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/edit_jam"
