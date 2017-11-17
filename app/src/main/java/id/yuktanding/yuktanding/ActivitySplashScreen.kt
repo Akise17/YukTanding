@@ -16,7 +16,7 @@ class ActivitySplashScreen : AppCompatActivity() ,GoogleApiClient.OnConnectionFa
     var mAuth: FirebaseAuth? = null
     var mGoogleApiClient: GoogleApiClient? = null
     private var TAG= "disini launcher "
-    var currentUser: FirebaseUser?=null
+    var curUser: FirebaseUser?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,13 +52,13 @@ class ActivitySplashScreen : AppCompatActivity() ,GoogleApiClient.OnConnectionFa
         //var opr = Auth.GOOGLE_SIGN_IN_API.silentSignIn(mGoogleApiClient) as OptionalPendingResult<GoogleSignInResult>
         //OptionalPendingResult<GoogleSignInResult> opr = mAuth!!.GoogleSignInApi.silentSignIn(mGoogleApiClient);
         // Check if user is signed in (non-null) and update UI accordingly.
-        currentUser = mAuth?.getCurrentUser()
-        Log.d(TAG, "onStart " + currentUser)
+        curUser = mAuth!!.currentUser
+        Log.d(TAG, "onStart " + curUser)
 
     }
 
     private fun redir(){
-        if(currentUser==null){
+        if(curUser==null){
             Log.d(TAG, "onStart belum login")
             val intente = Intent(this@ActivitySplashScreen, Login::class.java)
             intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

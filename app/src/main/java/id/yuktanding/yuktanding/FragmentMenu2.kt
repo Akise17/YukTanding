@@ -31,8 +31,7 @@ class FragmentMenu2 : Fragment() {
     private var nvar = "" // string buat nama
     private var ivar = "" // string buat url foto
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view= inflater!!.inflate(R.layout.fragment_menu_fragment2, container, false)
 
@@ -43,12 +42,13 @@ class FragmentMenu2 : Fragment() {
         Log.d(TAG,"setelah getUserInf")
         initGso() //inisialisasi google (TODO gw gak tau ini perlu dipanggil di setiap activity apa enggak)
         Log.d(TAG,"setelah init gso")
-        foto= view.findViewById(R.id.img_profil) as ImageView
-        nama= view.findViewById(R.id.nama_profil) as TextView
-        nama.setText(nvar)
+        foto= view.findViewById<ImageView>(R.id.img_profil)
+        nama= view.findViewById<TextView>(R.id.nama_profil)
+        nama.text = nvar
         Picasso.with(context)
                 .load(ivar)
                 .into(foto)
+        Log.d(TAG,"setelah Picasso")
         return view
     }
 

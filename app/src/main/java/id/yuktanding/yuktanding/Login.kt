@@ -79,13 +79,13 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
 
         //uil = findViewById(R.id.user_input_layout_log) as TextInputLayout
         //uie = findViewById(R.id.user_input_edit_log) as TextInputEditText
-        conlay = findViewById(R.id.constraint_log) as ConstraintLayout
-        btnSignin = findViewById(R.id.btn_Login) as Button
-        btnSignGoogle = findViewById(R.id.g_signin_log) as SignInButton
+        conlay = findViewById<ConstraintLayout>(R.id.constraint_log)
+        btnSignin = findViewById<Button>(R.id.btn_Login)
+        btnSignGoogle = findViewById<SignInButton>(R.id.g_signin_log)
         //link = findViewById(R.id.txt_tanya) as TextView
         Log.d(TAG, "setelah deklarasi tombol")
 
-        val intente = Intent(this, MenuHome::class.java)
+        val intente = Intent(this, ActivityMain::class.java)
 
         Log.d(TAG, "setelah deklarasi intent")
         mAuth = FirebaseAuth.getInstance() //untuk cek akun firebase dalam instance
@@ -211,28 +211,26 @@ public class Login : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
 
         mAuth!!.signInWithCredential(credential)
-            .addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
-                    override fun onComplete(task: Task<AuthResult>) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success")
-                            Toast.makeText(this@Login, "Sign In Berhasil", Toast.LENGTH_SHORT).show()
-                            val user = mAuth!!.getCurrentUser()
-                            if(user!!.isEmailVerified==false) {
-                                user.sendEmailVerification()
-                            }
-                            loginstat=true
-                            val intente = Intent(this@Login, ActivityMain::class.java)
-                            intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                            startActivity(intente)
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(this@Login, "Sign In Gagal", Toast.LENGTH_SHORT).show()
-                            Log.w(TAG, "signInWithCredential:failure", task.getException())
-                            loginstat=false
-                        }
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithCredential:success")
+                    Toast.makeText(this@Login, "Sign In Berhasil", Toast.LENGTH_SHORT).show()
+                    val user = mAuth!!.currentUser
+                    if(!user!!.isEmailVerified) {
+                        user.sendEmailVerification()
                     }
-                })
+                    loginstat=true
+                    val intente = Intent(this@Login, ActivityMain::class.java)
+                    intente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intente)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(this@Login, "Sign In Gagal", Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    loginstat=false
+                }
+            }
     }
     // [END auth_with_google]
 

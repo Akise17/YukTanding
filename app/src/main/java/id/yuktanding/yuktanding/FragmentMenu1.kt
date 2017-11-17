@@ -1,6 +1,7 @@
 package id.yuktanding.yuktanding
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -17,19 +18,17 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView
 
 class FragmentMenu1 : Fragment() {
 
-    internal lateinit var jadwalArrayList: ArrayList<ItemJadwal>
-    internal lateinit var jadwalRecyclerView: RecyclerView
+    private lateinit var jadwalArrayList: ArrayList<ItemJadwal>
+    private lateinit var jadwalRecyclerView: RecyclerView
 
     private val TAG = "Disini Fragment 1 "
     var i = 0
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater!!.inflate(R.layout.fragment_menu_fragment1, container, false)
-        Log.d(TAG, "onCreateView")
 
-        val sliderShow = view.findViewById(R.id.img_event) as SliderLayout
+        val sliderShow = view.findViewById<SliderLayout>(R.id.img_event)
         val textSliderView = TextSliderView(context)
         val textSliderView2 = TextSliderView(context)
 
@@ -46,20 +45,11 @@ class FragmentMenu1 : Fragment() {
         //==========================================================================================
         jadwalArrayList = ArrayList()
 
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Area 81", "23 agustus 14.00 - 15.00", R.drawable.icon_gun_small))
-        jadwalArrayList.add(ItemJadwal("Gloria", "24 agustus 14.00 - 15.00", R.drawable.icon_shuttle_cock_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "22 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "23 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
-        jadwalArrayList.add(ItemJadwal("Liverpool Futsal", "24 agustus 14.00 - 15.00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Fun Futsal SMAN 112", "BYWI Futsal | 18 Des 14:00", R.drawable.icon_bola_small))
+        jadwalArrayList.add(ItemJadwal("Safe the hostage", "Area 81 | 20 Des 19:00", R.drawable.icon_gun_small))
+        jadwalArrayList.add(ItemJadwal("Turnamen Kopi Tubruk", "Futsal Center 27 | 24Des 08:00", R.drawable.icon_bola_small))
 
-        jadwalRecyclerView = view.findViewById(R.id.recycle_view) as RecyclerView
+        jadwalRecyclerView = view.findViewById<RecyclerView>(R.id.recycle_view)
         val linearLayoutManager = LinearLayoutManager(context)
         jadwalRecyclerView.layoutManager = linearLayoutManager
         jadwalRecyclerView.isFocusable = false
@@ -67,15 +57,15 @@ class FragmentMenu1 : Fragment() {
         val itemAdapter = ItemJadwalAdapter(jadwalArrayList, context)
         jadwalRecyclerView.adapter = itemAdapter
 
-        val btn_F = view.findViewById(R.id.btn_futsal) as Button
-        val btn_Bul = view.findViewById(R.id.btn_bultang) as Button
-        val btn_A = view.findViewById(R.id.btn_asg) as Button
-        val btn_bow = view.findViewById(R.id.btn_bowling) as Button
+        val btn_F = view.findViewById<Button>(R.id.btn_futsal)
+        val btn_Bul = view.findViewById<Button>(R.id.btn_bultang)
+        val btn_A = view.findViewById<Button>(R.id.btn_asg)
+        val btn_bow = view.findViewById<Button>(R.id.btn_bowling)
 
 
         btn_F.setOnClickListener {
             Log.d(TAG, "tombol futsal diklik")
-            val intent = Intent(this.context, ActivityPesanFutsal::class.java)
+            val intent = Intent(this.context, ActivityFindMatch::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

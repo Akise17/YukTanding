@@ -18,9 +18,9 @@ class ItemJadwalAdapter(private val items: ArrayList<ItemJadwal>, private val co
         internal var imgLapangan: ImageView
 
         init {
-            name = itemView.findViewById(R.id.txt_namaLapangan) as TextView
-            waktu = itemView.findViewById(R.id.txt_jamMain) as TextView
-            imgLapangan = itemView.findViewById(R.id.img_profil) as ImageView
+            name = itemView.findViewById<TextView>(R.id.txt_namaLapangan)
+            waktu = itemView.findViewById<TextView>(R.id.txt_jamMain)
+            imgLapangan = itemView.findViewById<ImageView>(R.id.img_profil)
         }
     }
 

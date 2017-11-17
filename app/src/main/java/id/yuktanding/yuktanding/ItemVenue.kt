@@ -7,9 +7,9 @@ class ItemVenue() : Parcelable {
     var namaVenue: String? = null
     var descVenue: String? = null
     var addInfo: String?=null
-    var imgVenue: Int = 0
+    var imgVenue: String? = null
 
-    constructor(venuename: String, desc: String,additionInf:String, img: Int) : this() {
+    constructor(venuename: String, desc: String,additionInf:String, img: String) : this() {
         this.namaVenue = venuename
         this.descVenue = desc
         this.addInfo = additionInf
@@ -24,14 +24,14 @@ class ItemVenue() : Parcelable {
         parcel.writeString(this.namaVenue)
         parcel.writeString(this.descVenue)
         parcel.writeString(this.addInfo)
-        parcel.writeInt(this.imgVenue)
+        parcel.writeString(this.imgVenue)
     }
 
     protected constructor(`in`:Parcel) : this() {
         this.namaVenue = `in`.readString()
         this.descVenue = `in`.readString()
         this.addInfo = `in`.readString()
-        this.imgVenue = `in`.readInt()
+        this.imgVenue = `in`.readString()
     }
 
     companion object {

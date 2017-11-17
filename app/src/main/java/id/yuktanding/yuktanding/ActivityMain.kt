@@ -14,6 +14,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.annotation.RequiresApi
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
+import android.support.v7.app.ActionBarDrawerToggle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
@@ -33,7 +36,6 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     private var mViewPager: ViewPager? = null
-    private var navigation: BottomNavigationView?=null
 
     //variable firebase [Start]
     private val TAG = "Disini Main Home  "
@@ -57,7 +59,7 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         initGso() //inisialisasi google (TODO gw gak tau ini perlu dipanggil di setiap activity apa enggak)
         Log.d(TAG,"setelah init gso")
 
-        toolbar = findViewById(R.id.toolbar) as Toolbar
+        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title="Home"
 
@@ -67,23 +69,18 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
         Log.d(TAG,"setelah toolbar dan pagerAdapter")
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = findViewById(R.id.container) as ViewPager
+        mViewPager = findViewById(R.id.container)
         mViewPager!!.adapter = mSectionsPagerAdapter
 
         Log.d(TAG,"setelah viewPager")
 
-        val tabLayout = findViewById(R.id.tabs) as TabLayout
+        val tabLayout = findViewById<TabLayout>(R.id.tabs)
         tabLayout.setupWithViewPager(mViewPager)
         tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_tab0_selected)
         tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_tab1_idle)
         tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_tab2_idle)
 
         Log.d(TAG,"setelah tab layout")
-
-        navigation = findViewById(R.id.navigation) as BottomNavigationView //
-        navigation!!.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        navigation!!.menu.getItem(1).isChecked = true //posisi nav bar aktif
-        Log.d(TAG," setelah bootomnav")
 
 
         mViewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -172,32 +169,8 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
 
     override fun onRestart() {
         super.onRestart()
-        val navigation = findViewById(R.id.navigation) as BottomNavigationView
+        val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         navigation.menu.getItem(1).isChecked = true
-    }
-
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_pesanLapangan -> {
-                Log.d("yukTanding", "Navigation Pesan Lapangan Main")
-                val intent = Intent(this, ActivityPesanLapangan::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_menu -> {
-                Log.d("yukTanding", "Navigation Main Menu Main")
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_cariLawan -> {
-                Log.d("yukTanding", "Navigation Cari Lawan Main")
-                val intent = Intent(this, ActivityCariLawan::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -227,16 +200,18 @@ class ActivityMain : AppCompatActivity() ,GoogleApiClient.OnConnectionFailedList
 
     }
 
+
+
     /**
      * A placeholder fragment containing a simple view.
      */
 
     class PlaceholderFragment : Fragment() {
-        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                                  savedInstanceState: Bundle?): View? {
+        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+            super.onCreate(savedInstanceState)
             val rootView = inflater!!.inflate(R.layout.fragment_main2, container, false)
-            val textView = rootView.findViewById(R.id.section_label) as TextView
-            textView.text = getString(R.string.section_format, arguments.getInt(ARG_SECTION_NUMBER))
+            val textView = rootView.findViewById<TextView>(R.id.section_label)
+            textView.text = getString(R.string.section_format, arguments!!.getInt(ARG_SECTION_NUMBER))
 
             Log.d("disini","placeholderFragment oncreateView")
             return rootView

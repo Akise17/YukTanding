@@ -41,7 +41,7 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimaryLight"
+                android:background="@color/colorPrimaryDark"
                 app:tabIndicatorColor="@color/colorSecondary"/>
 
         </android.support.design.widget.AppBarLayout>
@@ -61,6 +61,7 @@
             android:background="@color/colorPrimaryDark"
             app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
             app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
+            android:visibility="gone"
             app:menu="@menu/navigation" />
     </LinearLayout>
 

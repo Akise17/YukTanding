@@ -30,14 +30,13 @@ class FragmentMenu3 : Fragment() {
 
     var userUID: String? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater!!.inflate(R.layout.fragment_menu_fragment3, container, false)
 
         Log.d(TAG,"sebelum user")
         user = FirebaseAuth.getInstance().currentUser!!
-        //if (user != null) userUID = user.uid
+//        if (user != null) userUID = user.uid
         userUID = user.uid
 
         Log.d(TAG,"sebelum myRef " + userUID)
@@ -81,7 +80,7 @@ class FragmentMenu3 : Fragment() {
         timArrayList.add(ItemTim("Your Friend 6", "P:33 W:11 D:2 L:20", R.mipmap.yuklogo))
 
 
-        timRecyclerView = view.findViewById(R.id.tim_recyclerView) as RecyclerView
+        timRecyclerView = view.findViewById<RecyclerView>(R.id.tim_recyclerView)
         val linearLayoutManager = LinearLayoutManager(context)
         timRecyclerView.layoutManager = linearLayoutManager
 

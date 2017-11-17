@@ -6,11 +6,11 @@
     <color name="colorSecondary">#b71c1c</color>
     <color name="colorSecondaryDark">#7f0000</color>
     <color name="colorSecondaryLight">#f05545</color>
+    <color name="colorPrimaryAccent">#7f0000</color>
 
     <color name="yukTandingOren">#d14b02</color>
     <color name="yukTandingPastel">#77dd77</color>
     <color name="yukTandingGreen">#1d5f04</color>
-    <color name="oren">#ffa726</color>
     <color name="background_prime">#401a1a1a</color>
     <color name="color_text_black">#000000</color>
     <color name="color_text_white">#FFFF</color>

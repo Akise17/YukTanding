@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_pesanLapangan"
+        android:id="@+id/navigation_left"
         android:icon="@drawable/ic_bnav_schedule_24dp"
         android:orderInCategory="1"
-        android:title="Jadwal" />
+        android:title="Find Match" />
 
     <item
         android:id="@+id/navigation_menu"
@@ -14,7 +14,7 @@
         android:title="Dashboard" />
 
     <item
-        android:id="@+id/navigation_cariLawan"
+        android:id="@+id/navigation_right"
         android:icon="@drawable/ic_bnav_squad_24dp"
         android:orderInCategory="3"
         android:title="Squad" />
